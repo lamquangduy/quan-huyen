@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Cán bộ công chức - UBND Quận Liên Chiểu</title>
+    <link rel="icon" type="image/png" href="../../assets/images/icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/canbo.css">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Sidebar -->
+    <div id="sidebar"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="page-header">
+            <h1>Quản lý Cán bộ công chức</h1>
+            <div class="header-actions">
+                <button class="btn btn-primary" onclick="openAddForm()">
+                    <i class="fas fa-plus"></i> Thêm mới
+                </button>
+                <button class="btn btn-excel" onclick="exportToExcel()">
+                    <i class="fas fa-file-excel"></i> Xuất Excel
+                </button>
+            </div>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Phòng ban</label>
+                        <select class="form-control" id="departmentFilter">
+                            <option value="">Tất cả</option>
+                            <option value="phong-giao-duc">Phòng Giáo dục</option>
+                            <option value="phong-kinh-te">Phòng Kinh tế</option>
+                            <option value="phong-ldtbxh">Phòng LĐTBXH</option>
+                            <option value="phong-noi-vu">Phòng Nội vụ</option>
+                            <option value="phong-quan-ly-do-thi">Phòng Quản lý đô thị</option>
+                            <option value="phong-tnmt">Phòng Tài nguyên và Môi trường</option>
+                            <option value="phong-tu-phap">Phòng Tư pháp</option>
+                            <option value="phong-vhtt">Phòng Văn hóa Thông tin</option>
+                            <option value="phong-y-te">Phòng Y tế</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Năm công tác</label>
+                        <select class="form-control" id="yearFilter">
+                            <option value="">Tất cả</option>
+                            <option value="2024">2024</option>
+                            <option value="2023">2023</option>
+                            <option value="2022">2022</option>
+                            <option value="2021">2021</option>
+                            <option value="2020">2020</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Trạng thái</label>
+                        <select class="form-control" id="statusFilter">
+                            <option value="">Tất cả</option>
+                            <option value="dangcongtac">Đang công tác</option>
+                            <option value="nghiviec">Nghỉ việc</option>
+                            <option value="nghihuu">Nghỉ hưu</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Tìm kiếm</label>
+                        <div class="search-box">
+                            <input type="text" class="form-control" id="searchInput" 
+                                   placeholder="Tên cán bộ...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table Section -->
+        <div class="table-section">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th width="50">STT</th>
+                            <th width="150">Phòng ban</th>
+                            <th width="200">Họ và tên</th>
+                            <th width="120">Năm công tác</th>
+                            <th width="200">Chức vụ</th>
+                            <th width="120">Trạng thái</th>
+                            <th width="100">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody id="officialsTable"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination-section">
+            <div class="row">
+                <div class="col-6">
+                    <div class="pagination-info" id="paginationInfo">
+                        Hiển thị 0-0 trong tổng số 0 cán bộ
+                    </div>
+                </div>
+                <div class="col-6">
+                    <ul class="pagination" id="pagination"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/canbo.js"></script>
+</body>
+</html>

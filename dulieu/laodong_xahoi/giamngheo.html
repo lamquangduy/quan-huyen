@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Giảm nghèo - UBND Quận Liên Chiểu</title>
+    <link rel="icon" type="image/png" href="../../assets/images/icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/quanlygiamngheo.css">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Sidebar -->
+    <div id="sidebar"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="page-header">
+            <h1>Quản lý Giảm nghèo</h1>
+            <div class="header-actions">
+                <button class="btn btn-primary" onclick="openAddForm()">
+                    <i class="fas fa-plus"></i> Thêm mới
+                </button>
+                <button class="btn btn-excel" onclick="exportToExcel()">
+                    <i class="fas fa-file-excel"></i> Xuất Excel
+                </button>
+            </div>
+        </div>
+
+        <!-- Thống kê nhanh -->
+        <div class="stats-section">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <div class="stats-icon total">
+                            <i class="fas fa-house-damage"></i>
+                        </div>
+                        <div class="stats-info">
+                            <h3>Tổng số hộ nghèo</h3>
+                            <p id="totalPoorHouseholds">0</p>
+                            <small>Đang quản lý</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <div class="stats-icon near">
+                            <i class="fas fa-house"></i>
+                        </div>
+                        <div class="stats-info">
+                            <h3>Hộ cận nghèo</h3>
+                            <p id="nearPoorHouseholds">0</p>
+                            <small>Đang theo dõi</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <div class="stats-icon support">
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                        <div class="stats-info">
+                            <h3>Đã hỗ trợ</h3>
+                            <p id="supportedHouseholds">0</p>
+                            <small>Trong năm 2024</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <div class="stats-icon escaped">
+                            <i class="fas fa-arrow-trend-up"></i>
+                        </div>
+                        <div class="stats-info">
+                            <h3>Thoát nghèo</h3>
+                            <p id="escapedPoverty">0</p>
+                            <small>Trong năm 2024</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Loại hộ</label>
+                        <select class="form-control" id="householdTypeFilter">
+                            <option value="">Tất cả</option>
+                            <option value="poor">Hộ nghèo</option>
+                            <option value="nearPoor">Hộ cận nghèo</option>
+                            <option value="escaped">Hộ thoát nghèo</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Phường</label>
+                        <select class="form-control" id="wardFilter">
+                            <option value="">Tất cả</option>
+                            <option value="hoaMinh">Hòa Minh</option>
+                            <option value="hoaKhanhNam">Hòa Khánh Nam</option>
+                            <option value="hoaKhanhBac">Hòa Khánh Bắc</option>
+                            <option value="hoaHiepNam">Hòa Hiệp Nam</option>
+                            <option value="hoaHiepBac">Hòa Hiệp Bắc</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Hình thức hỗ trợ</label>
+                        <select class="form-control" id="supportTypeFilter">
+                            <option value="">Tất cả</option>
+                            <option value="education">Hỗ trợ giáo dục</option>
+                            <option value="healthcare">Hỗ trợ y tế</option>
+                            <option value="housing">Hỗ trợ nhà ở</option>
+                            <option value="business">Hỗ trợ sinh kế</option>
+                            <option value="training">Đào tạo nghề</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Tìm kiếm</label>
+                        <div class="search-box">
+                            <input type="text" class="form-control" id="searchInput" 
+                                   placeholder="Tên chủ hộ, địa chỉ...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table Section -->
+        <div class="table-section">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th width="50">STT</th>
+                            <th width="200">Chủ hộ</th>
+                            <th width="130">Số nhân khẩu</th>
+                            <th width="200">Địa chỉ</th>
+                            <th width="110">Phường</th>
+                            <th width="110">Loại hộ</th>
+                            <th width="120">Thu nhập BQ</th>
+                            <th width="150">Hình thức hỗ trợ</th>
+                            <th width="140">Trạng thái</th>
+                            <th width="100">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody id="householdTable"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination-section">
+            <div class="row">
+                <div class="col-6">
+                    <div class="pagination-info" id="paginationInfo">
+                        Hiển thị 0-0 trong tổng số 0 hộ
+                    </div>
+                </div>
+                <div class="col-6">
+                    <ul class="pagination" id="pagination"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/quanlygiamngheo.js"></script>
+    <script src="../../assets/js/hcbot.min.js" data-client-id="aZ99B0Ddnl5m"></script>
+</body>
+</html>

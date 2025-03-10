@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Người có công - UBND Quận Liên Chiểu</title>
+    <link rel="icon" type="image/png" href="../../assets/images/icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/quanlynguoicocong.css">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Sidebar -->
+    <div id="sidebar"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="page-header">
+            <h1>Quản lý Người có công</h1>
+            <div class="header-actions">
+                <button class="btn btn-primary" onclick="openAddForm()">
+                    <i class="fas fa-plus"></i> Thêm mới
+                </button>
+                <button class="btn btn-excel" onclick="exportToExcel()">
+                    <i class="fas fa-file-excel"></i> Xuất Excel
+                </button>
+            </div>
+        </div>
+
+        <!-- Thống kê nhanh -->
+        <div class="stats-section">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <div class="stats-icon veteran">
+                            <i class="fas fa-medal"></i>
+                        </div>
+                        <div class="stats-info">
+                            <h3>Tổng số người có công</h3>
+                            <p id="totalVeterans">0</p>
+                            <small>Đang quản lý</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <div class="stats-icon benefit">
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                        <div class="stats-info">
+                            <h3>Đang hưởng trợ cấp</h3>
+                            <p id="receivingBenefits">0</p>
+                            <small>Trợ cấp hàng tháng</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <div class="stats-icon treatment">
+                            <i class="fas fa-hospital"></i>
+                        </div>
+                        <div class="stats-info">
+                            <h3>Điều dưỡng</h3>
+                            <p id="inTreatment">0</p>
+                            <small>Đang điều dưỡng</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <div class="stats-icon housing">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <div class="stats-info">
+                            <h3>Hỗ trợ nhà ở</h3>
+                            <p id="housingSupport">0</p>
+                            <small>Đã được hỗ trợ</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Loại đối tượng</label>
+                        <select class="form-control" id="veteranTypeFilter">
+                            <option value="">Tất cả</option>
+                            <option value="martyrFamily">Gia đình liệt sĩ</option>
+                            <option value="woundedSoldier">Thương binh</option>
+                            <option value="sickSoldier">Bệnh binh</option>
+                            <option value="resistanceActivist">Người hoạt động kháng chiến</option>
+                            <option value="revolutionContributor">Người có công giúp đỡ cách mạng</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Phường</label>
+                        <select class="form-control" id="wardFilter">
+                            <option value="">Tất cả</option>
+                            <option value="hoaMinh">Hòa Minh</option>
+                            <option value="hoaKhanhNam">Hòa Khánh Nam</option>
+                            <option value="hoaKhanhBac">Hòa Khánh Bắc</option>
+                            <option value="hoaHiepNam">Hòa Hiệp Nam</option>
+                            <option value="hoaHiepBac">Hòa Hiệp Bắc</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Trạng thái</label>
+                        <select class="form-control" id="statusFilter">
+                            <option value="">Tất cả</option>
+                            <option value="receiving">Đang hưởng trợ cấp</option>
+                            <option value="suspended">Tạm dừng</option>
+                            <option value="terminated">Đã chấm dứt</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Tìm kiếm</label>
+                        <div class="search-box">
+                            <input type="text" class="form-control" id="searchInput" 
+                                   placeholder="Tên, số hồ sơ...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table Section -->
+        <div class="table-section">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th width="50">STT</th>
+                            <th width="120">Số hồ sơ</th>
+                            <th width="180">Họ và tên</th>
+                            <th width="100">Năm sinh</th>
+                            <th width="150">Loại đối tượng</th>
+                            <th width="120">Phường</th>
+                            <th width="120">Mức trợ cấp</th>
+                            <th width="120">Ngày hưởng</th>
+                            <th width="140">Trạng thái</th>
+                            <th width="100">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody id="veteranTable"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination-section">
+            <div class="row">
+                <div class="col-6">
+                    <div class="pagination-info" id="paginationInfo">
+                        Hiển thị 0-0 trong tổng số 0 người có công
+                    </div>
+                </div>
+                <div class="col-6">
+                    <ul class="pagination" id="pagination"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/quanlynguoicocong.js"></script>
+    <script src="../../assets/js/hcbot.min.js" data-client-id="aZ99B0Ddnl5m"></script>
+</body>
+</html>

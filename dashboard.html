@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - UBND Quận Liên Chiểu</title>
+    <link rel="icon" type="image/png" href="assets/images/icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Sidebar -->
+    <div id="sidebar"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="page-header">
+            <h1>Tổng quan</h1>
+        </div>
+
+        <!-- Stats Overview -->
+        <div class="stats-overview">
+            <!-- Dự án đầu tư -->
+            <div class="stats-row">
+                <div class="stats-card">
+                    <div class="stats-header">
+                        <i class="fas fa-project-diagram"></i>
+                        <h3>Dự án đầu tư</h3>
+                    </div>
+                    <div class="stats-body">
+                        <div class="stat-item" data-stat="projects-total">
+                            <span class="label">Tổng số dự án</span>
+                            <span class="value">127</span>
+                            <span class="unit">dự án</span>
+                        </div>
+                        <div class="stat-item" data-stat="projects-completed">
+                            <span class="label">Dự án hoàn thành</span>
+                            <span class="value">42</span>
+                            <span class="unit">dự án</span>
+                        </div>
+                        <div class="stat-item" data-stat="projects-investment">
+                            <span class="label">Tổng vốn đầu tư</span>
+                            <span class="value">2.450.000</span>
+                            <span class="unit">Triệu đồng</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Thương mại - Chợ -->
+                <div class="stats-card">
+                    <div class="stats-header">
+                        <i class="fas fa-store"></i>
+                        <h3>Thương mại - Chợ</h3>
+                    </div>
+                    <div class="stats-body">
+                        <div class="stat-item" data-stat="commerce-markets">
+                            <span class="label">Số lượng chợ</span>
+                            <span class="value">8</span>
+                            <span class="unit">chợ</span>
+                        </div>
+                        <div class="stat-item" data-stat="commerce-supermarkets">
+                            <span class="label">Số lượng siêu thị</span>
+                            <span class="value">12</span>
+                            <span class="unit">siêu thị</span>
+                        </div>
+                        <div class="stat-item" data-stat="commerce-businesses">
+                            <span class="label">Hộ kinh doanh</span>
+                            <span class="value">12.456</span>
+                            <span class="unit">hộ</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Đô thị -->
+                <div class="stats-card">
+                    <div class="stats-header">
+                        <i class="fas fa-city"></i>
+                        <h3>Quản lý đô thị</h3>
+                    </div>
+                    <div class="stats-body">
+                        <div class="stat-item" data-stat="urban-roads">
+                            <span class="label">Tỷ lệ đường được bê tông hóa</span>
+                            <span class="value">87.5</span>
+                            <span class="unit">%</span>
+                        </div>
+                        <div class="stat-item" data-stat="urban-lighting">
+                            <span class="label">Tỷ lệ chiếu sáng công cộng</span>
+                            <span class="value">95.2</span>
+                            <span class="unit">%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 2 -->
+            <div class="stats-row">
+                <!-- Kinh tế thủy sản -->
+                <div class="stats-card">
+                    <div class="stats-header">
+                        <i class="fas fa-fish"></i>
+                        <h3>Kinh tế thủy sản</h3>
+                    </div>
+                    <div class="stats-body">
+                        <div class="stat-item" data-stat="fishery-production">
+                            <span class="label">Sản lượng thủy sản</span>
+                            <span class="value">2.850</span>
+                            <span class="unit">tấn</span>
+                        </div>
+                        <div class="stat-item" data-stat="fishery-value">
+                            <span class="label">Giá trị sản xuất</span>
+                            <span class="value">325.000</span>
+                            <span class="unit">Triệu đồng</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lao động xã hội -->
+                <div class="stats-card">
+                    <div class="stats-header">
+                        <i class="fas fa-hands-helping"></i>
+                        <h3>Lao động - Xã hội</h3>
+                    </div>
+                    <div class="stats-body">
+                        <div class="stat-item" data-stat="social-employment">
+                            <span class="label">Tỷ lệ lao động có việc làm</span>
+                            <span class="value">98.3</span>
+                            <span class="unit">%</span>
+                        </div>
+                        <div class="stat-item" data-stat="social-poverty">
+                            <span class="label">Hộ nghèo</span>
+                            <span class="value">683</span>
+                            <span class="unit">hộ</span>
+                        </div>
+                        <div class="stat-item" data-stat="social-training">
+                            <span class="label">Đào tạo nghề</span>
+                            <span class="value">1.245</span>
+                            <span class="unit">người</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Giáo dục -->
+                <div class="stats-card">
+                    <div class="stats-header">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h3>Giáo dục</h3>
+                    </div>
+                    <div class="stats-body">
+                        <div class="stat-item" data-stat="education-students">
+                            <span class="label">Tổng số học sinh</span>
+                            <span class="value">42.672</span>
+                            <span class="unit">học sinh</span>
+                        </div>
+                        <div class="stat-item" data-stat="education-schools">
+                            <span class="label">Trường đạt chuẩn</span>
+                            <span class="value">45</span>
+                            <span class="unit">trường</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 3 -->
+            <div class="stats-row">
+                <!-- Văn hóa thể thao -->
+                <div class="stats-card">
+                    <div class="stats-header">
+                        <i class="fas fa-theater-masks"></i>
+                        <h3>Văn hóa - Thể thao</h3>
+                    </div>
+                    <div class="stats-body">
+                        <div class="stat-item" data-stat="culture-houses">
+                            <span class="label">Nhà văn hóa</span>
+                            <span class="value">45</span>
+                            <span class="unit">nhà</span>
+                        </div>
+                        <div class="stat-item" data-stat="culture-events">
+                            <span class="label">Sự kiện văn hóa</span>
+                            <span class="value">324</span>
+                            <span class="unit">sự kiện</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Y tế -->
+                <div class="stats-card">
+                    <div class="stats-header">
+                        <i class="fas fa-hospital"></i>
+                        <h3>Y tế</h3>
+                    </div>
+                    <div class="stats-body">
+                        <div class="stat-item" data-stat="health-insurance">
+                            <span class="label">Bảo hiểm y tế</span>
+                            <span class="value">95.15</span>
+                            <span class="unit">%</span>
+                        </div>
+                        <div class="stat-item" data-stat="health-facilities">
+                            <span class="label">Cơ sở y tế</span>
+                            <span class="value">15</span>
+                            <span class="unit">cơ sở</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tài nguyên môi trường -->
+                <div class="stats-card">
+                    <div class="stats-header">
+                        <i class="fas fa-leaf"></i>
+                        <h3>Tài nguyên - Môi trường</h3>
+                    </div>
+                    <div class="stats-body">
+                        <div class="stat-item" data-stat="environment-water">
+                            <span class="label">Tỷ lệ hộ dùng nước sạch</span>
+                            <span class="value">98.5</span>
+                            <span class="unit">%</span>
+                        </div>
+                        <div class="stat-item" data-stat="environment-waste">
+                            <span class="label">Thu gom rác thải</span>
+                            <span class="value">96.2</span>
+                            <span class="unit">%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="charts-section">
+            <!-- Biểu đồ dự án -->
+            <div class="chart-container">
+                <h3>Tình hình dự án</h3>
+                <canvas id="projectsChart"></canvas>
+            </div>
+
+            <!-- Biểu đồ thương mại -->
+            <div class="chart-container">
+                <h3>Phát triển thương mại</h3>
+                <canvas id="commerceChart"></canvas>
+            </div>
+
+            <!-- Biểu đồ kinh tế thủy sản -->
+            <div class="chart-container">
+                <h3>Kinh tế thủy sản</h3>
+                <canvas id="fisheryChart"></canvas>
+            </div>
+
+            <!-- Biểu đồ lao động -->
+            <div class="chart-container">
+                <h3>Lao động - Việc làm</h3>
+                <canvas id="laborChart"></canvas>
+            </div>
+
+            <!-- Biểu đồ giáo dục -->
+            <div class="chart-container">
+                <h3>Giáo dục</h3>
+                <canvas id="educationChart"></canvas>
+            </div>
+
+            <!-- Biểu đồ văn hóa -->
+            <div class="chart-container">
+                <h3>Văn hóa - Thể thao</h3>
+                <canvas id="cultureChart"></canvas>
+            </div>
+
+            <!-- Biểu đồ y tế -->
+            <div class="chart-container">
+                <h3>Y tế</h3>
+                <canvas id="healthChart"></canvas>
+            </div>
+
+            <!-- Biểu đồ môi trường -->
+            <div class="chart-container">
+                <h3>Môi trường</h3>
+                <canvas id="environmentChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+</body>
+</html>

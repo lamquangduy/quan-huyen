@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Sự kiện VHTT - UBND Quận Liên Chiểu</title>
+    <link rel="icon" type="image/png" href="../../assets/images/icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/quanlysukien.css">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Sidebar -->
+    <div id="sidebar"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="page-header">
+            <h1>Quản lý Sự kiện Văn hóa - Thể thao</h1>
+            <div class="header-actions">
+                <button class="btn btn-primary" onclick="openAddForm()">
+                    <i class="fas fa-plus"></i> Thêm mới
+                </button>
+                <button class="btn btn-excel" onclick="exportToExcel()">
+                    <i class="fas fa-file-excel"></i> Xuất Excel
+                </button>
+            </div>
+        </div>
+
+        <!-- Thống kê nhanh -->
+        <div class="stats-section">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <div class="stats-icon total">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="stats-info">
+                            <h3>Tổng số sự kiện</h3>
+                            <p id="totalEvents">0</p>
+                            <small>Trong năm 2024</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <div class="stats-icon upcoming">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stats-info">
+                            <h3>Sắp diễn ra</h3>
+                            <p id="upcomingEvents">0</p>
+                            <small>Trong 30 ngày tới</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <div class="stats-icon ongoing">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="stats-info">
+                            <h3>Đang diễn ra</h3>
+                            <p id="ongoingEvents">0</p>
+                            <small>Hiện tại</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <div class="stats-icon completed">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stats-info">
+                            <h3>Đã hoàn thành</h3>
+                            <p id="completedEvents">0</p>
+                            <small>Trong năm 2024</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Loại sự kiện</label>
+                        <select class="form-control" id="eventTypeFilter">
+                            <option value="">Tất cả</option>
+                            <option value="cultural">Văn hóa nghệ thuật</option>
+                            <option value="sport">Thể dục thể thao</option>
+                            <option value="tourism">Du lịch</option>
+                            <option value="festival">Lễ hội truyền thống</option>
+                            <option value="competition">Hội thi/Cuộc thi</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Phường</label>
+                        <select class="form-control" id="wardFilter">
+                            <option value="">Tất cả</option>
+                            <option value="hoaMinh">Hòa Minh</option>
+                            <option value="hoaKhanhNam">Hòa Khánh Nam</option>
+                            <option value="hoaKhanhBac">Hòa Khánh Bắc</option>
+                            <option value="hoaHiepNam">Hòa Hiệp Nam</option>
+                            <option value="hoaHiepBac">Hòa Hiệp Bắc</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Trạng thái</label>
+                        <select class="form-control" id="statusFilter">
+                            <option value="">Tất cả</option>
+                            <option value="upcoming">Sắp diễn ra</option>
+                            <option value="ongoing">Đang diễn ra</option>
+                            <option value="completed">Đã hoàn thành</option>
+                            <option value="cancelled">Đã hủy</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Tìm kiếm</label>
+                        <div class="search-box">
+                            <input type="text" class="form-control" id="searchInput" 
+                                   placeholder="Tên sự kiện, địa điểm...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Calendar View Toggle -->
+        <div class="view-toggle">
+            <button class="btn btn-toggle active" data-view="table">
+                <i class="fas fa-list"></i> Danh sách
+            </button>
+            <button class="btn btn-toggle" data-view="calendar">
+                <i class="fas fa-calendar-alt"></i> Lịch
+            </button>
+        </div>
+
+        <!-- Table View -->
+        <div class="table-section" id="tableView">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th width="50">STT</th>
+                            <th width="200">Tên sự kiện</th>
+                            <th width="120">Loại</th>
+                            <th width="150">Thời gian</th>
+                            <th width="200">Địa điểm</th>
+                            <th width="150">Đơn vị tổ chức</th>
+                            <th width="100">Dự kiến</th>
+                            <th width="120">Trạng thái</th>
+                            <th width="100">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody id="eventsTable"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Calendar View -->
+        <div class="calendar-section" id="calendarView" style="display: none;">
+            <!-- Calendar sẽ được render bằng JavaScript -->
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination-section">
+            <div class="row">
+                <div class="col-6">
+                    <div class="pagination-info" id="paginationInfo">
+                        Hiển thị 0-0 trong tổng số 0 sự kiện
+                    </div>
+                </div>
+                <div class="col-6">
+                    <ul class="pagination" id="pagination"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/quanlysukien.js"></script>
+    <script src="../../assets/js/hcbot.min.js" data-client-id="aZ99B0Ddnl5m"></script>
+</body>
+</html>

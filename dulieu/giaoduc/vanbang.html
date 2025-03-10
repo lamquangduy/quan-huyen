@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Văn bằng - UBND Quận Liên Chiểu</title>
+    <link rel="icon" type="image/png" href="../../assets/images/icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/quanlyvanbang.css">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Sidebar -->
+    <div id="sidebar"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="page-header">
+            <h1>Quản lý Văn bằng Tốt nghiệp THCS</h1>
+            <div class="header-actions">
+                <button class="btn btn-primary" onclick="openAddForm()">
+                    <i class="fas fa-plus"></i> Thêm mới
+                </button>
+                <button class="btn btn-excel" onclick="exportToExcel()">
+                    <i class="fas fa-file-excel"></i> Xuất Excel
+                </button>
+            </div>
+        </div>
+
+        <!-- Thống kê nhanh -->
+        <div class="stats-section">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <div class="stats-icon total">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="stats-info">
+                            <h3>Tổng số văn bằng</h3>
+                            <p id="totalDiplomas">0</p>
+                            <small>Đã cấp</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <div class="stats-icon current">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="stats-info">
+                            <h3>Năm hiện tại</h3>
+                            <p id="currentYearDiplomas">0</p>
+                            <small>Năm 2024</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <div class="stats-icon pending">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stats-info">
+                            <h3>Chờ cấp phát</h3>
+                            <p id="pendingDiplomas">0</p>
+                            <small>Cần xử lý</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <div class="stats-icon reissue">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <div class="stats-info">
+                            <h3>Cấp lại</h3>
+                            <p id="reissuedDiplomas">0</p>
+                            <small>Trong năm 2024</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Năm tốt nghiệp</label>
+                        <select class="form-control" id="graduationYearFilter">
+                            <option value="">Tất cả</option>
+                            <option value="2024">2024</option>
+                            <option value="2023">2023</option>
+                            <option value="2022">2022</option>
+                            <option value="2021">2021</option>
+                            <option value="2020">2020</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Trường THCS</label>
+                        <select class="form-control" id="schoolFilter">
+                            <option value="">Tất cả</option>
+                            <option value="minhkhai">THCS Nguyễn Thị Minh Khai</option>
+                            <option value="nguyentrai">THCS Nguyễn Trãi</option>
+                            <option value="lehongphong">THCS Lê Hồng Phong</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Trạng thái</label>
+                        <select class="form-control" id="statusFilter">
+                            <option value="">Tất cả</option>
+                            <option value="issued">Đã cấp</option>
+                            <option value="pending">Chờ cấp</option>
+                            <option value="reissued">Cấp lại</option>
+                            <option value="revoked">Thu hồi</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Tìm kiếm</label>
+                        <div class="search-box">
+                            <input type="text" class="form-control" id="searchInput" 
+                                   placeholder="Tên học sinh, số hiệu...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table Section -->
+        <div class="table-section">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th width="50">STT</th>
+                            <th width="200">Họ và tên</th>
+                            <th width="100">Ngày sinh</th>
+                            <th width="150">Số hiệu</th>
+                            <th width="150">Số vào sổ</th>
+                            <th width="150">Trường THCS</th>
+                            <th width="100">Năm TN</th>
+                            <th width="120">Trạng thái</th>
+                            <th width="100">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody id="diplomasTable"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination-section">
+            <div class="row">
+                <div class="col-6">
+                    <div class="pagination-info" id="paginationInfo">
+                        Hiển thị 0-0 trong tổng số 0 văn bằng
+                    </div>
+                </div>
+                <div class="col-6">
+                    <ul class="pagination" id="pagination"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/quanlyvanbang.js"></script>
+    <script src="../../assets/js/hcbot.min.js" data-client-id="aZ99B0Ddnl5m"></script>
+</body>
+</html>

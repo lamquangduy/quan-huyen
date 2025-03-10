@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý hộ kinh doanh - UBND Quận Liên Chiểu</title>
+    <link rel="icon" type="image/png" href="../../assets/images/icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/hokinhdoanh.css">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Sidebar -->
+    <div id="sidebar"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="page-header">
+            <h1>Quản lý hộ kinh doanh</h1>
+            <div class="header-actions">
+                <button class="btn btn-primary" onclick="openAddModal()">
+                    <i class="fas fa-plus"></i> Thêm mới
+                </button>
+                <button class="btn btn-outline-secondary">
+                    <i class="fas fa-file-export"></i> Xuất Excel
+                </button>
+            </div>
+        </div>
+
+        <div class="filter-section">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Chợ</label>
+                        <select class="form-control" id="filterMarket">
+                            <option value="">Tất cả</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Ngành hàng</label>
+                        <select class="form-control" id="filterCategory">
+                            <option value="">Tất cả</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Trạng thái ATTP</label>
+                        <select class="form-control" id="filterATTP">
+                            <option value="">Tất cả</option>
+                            <option value="valid">Còn hiệu lực</option>
+                            <option value="expired">Hết hiệu lực</option>
+                            <option value="none">Chưa có</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Trạng thái hoạt động</label>
+                        <select class="form-control" id="filterStatus">
+                            <option value="">Tất cả</option>
+                            <option value="active">Đang hoạt động</option>
+                            <option value="suspended">Tạm ngưng</option>
+                            <option value="stopped">Ngừng hoạt động</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Tìm kiếm</label>
+                        <input type="text" class="form-control" id="searchKeyword" placeholder="Nhập tên chủ hộ, số CMND/CCCD, mã số thuế...">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-section">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th width="50">STT</th>
+                            <th width="200">Tên chủ hộ</th>
+                            <th width="120">CMND/CCCD</th>
+                            <th width="120">Mã số thuế</th>
+                            <th width="150">Ngành hàng</th>
+                            <th width="120">Số lô/sạp</th>
+                            <th width="120">GCN ATTP</th>
+                            <th width="150">Trạng thái</th>
+                            <th width="150">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody id="traderList">
+                        <!-- Data sẽ được load bằng JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="pagination-section">
+            <div class="row align-items-center">
+                <div class="col-6">
+                    <div class="pagination-info" id="paginationInfo">
+                        <!-- Thông tin phân trang -->
+                    </div>
+                </div>
+                <div class="col-6">
+                    <nav class="pagination-nav">
+                        <ul class="pagination" id="pagination">
+                            <!-- Phân trang -->
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Thêm/Sửa Hộ kinh doanh -->
+    <div class="modal" id="traderModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modalTitle">Thêm mới hộ kinh doanh</h4>
+                    <button type="button" class="close" onclick="closeModal()">×</button>
+                </div>
+                <div class="modal-body">
+                    <form id="traderForm">
+                        <!-- Tab Navigation -->
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-tab="basic">Thông tin cơ bản</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-tab="business">Thông tin kinh doanh</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-tab="attp">Thông tin ATTP</a>
+                            </li>
+                        </ul>
+
+                        <!-- Tab Content -->
+                        <div class="tab-content">
+                            <!-- Tab Thông tin cơ bản -->
+                            <div class="tab-pane active" id="basic">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Tên chủ hộ <span class="required">*</span></label>
+                                            <input type="text" class="form-control" id="traderName" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>CMND/CCCD <span class="required">*</span></label>
+                                            <input type="text" class="form-control" id="traderId" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Ngày sinh</label>
+                                            <input type="date" class="form-control" id="traderBirthday">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Số điện thoại</label>
+                                            <input type="tel" class="form-control" id="traderPhone">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Địa chỉ thường trú</label>
+                                    <input type="text" class="form-control" id="traderAddress">
+                                </div>
+                            </div>
+
+                            <!-- Tab Thông tin kinh doanh -->
+                            <div class="tab-pane" id="business">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Mã số thuế</label>
+                                            <input type="text" class="form-control" id="taxCode">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Ngày cấp MST</label>
+                                            <input type="date" class="form-control" id="taxDate">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Chợ <span class="required">*</span></label>
+                                            <select class="form-control" id="marketId" required>
+                                                <option value="">Chọn chợ</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Ngành hàng <span class="required">*</span></label>
+                                            <select class="form-control" id="categoryId" required>
+                                                <option value="">Chọn ngành hàng</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Số lô/sạp</label>
+                                            <select class="form-control" id="stallId" multiple>
+                                                <option value="">Chọn lô/sạp</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Trạng thái</label>
+                                            <select class="form-control" id="status">
+                                                <option value="active">Đang hoạt động</option>
+                                                <option value="suspended">Tạm ngưng</option>
+                                                <option value="stopped">Ngừng hoạt động</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tab Thông tin ATTP -->
+                            <div class="tab-pane" id="attp">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Số GCN ATTP</label>
+                                            <input type="text" class="form-control" id="attpNumber">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Ngày cấp</label>
+                                            <input type="date" class="form-control" id="attpDate">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Ngày hết hạn</label>
+                                            <input type="date" class="form-control" id="attpExpiry">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Đơn vị cấp</label>
+                                            <input type="text" class="form-control" id="attpIssuer">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Ghi chú</label>
+                                    <textarea class="form-control" id="note" rows="3"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal()">Đóng</button>
+                    <button type="button" class="btn btn-primary" onclick="saveTrader()">Lưu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/hokinhdoanh.js"></script>
+    <script src="../../assets/js/hcbot.min.js" data-client-id="aZ99B0Ddnl5m"></script>
+</body>
+</html>

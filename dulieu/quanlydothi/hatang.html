@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý hạ tầng - UBND Quận Liên Chiểu</title>
+    <link rel="icon" type="image/png" href="../../assets/images/icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/quanlyhatang.css">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Sidebar -->
+    <div id="sidebar"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="page-header">
+            <h1>Quản lý hạ tầng kỹ thuật</h1>
+            <div class="header-actions">
+                <button class="btn btn-excel" onclick="exportToExcel()">
+                    <i class="fas fa-file-excel"></i> Xuất Excel
+                </button>
+            </div>
+        </div>
+
+        <!-- Thống kê nhanh -->
+        <div class="stats-section">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <div class="stats-icon road">
+                            <i class="fas fa-road"></i>
+                        </div>
+                        <div class="stats-info">
+                            <h3>Tuyến đường</h3>
+                            <p>156 tuyến</p>
+                            <small>Tổng chiều dài: 98.5 km</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <div class="stats-icon bridge">
+                            <i class="fas fa-archway"></i>
+                        </div>
+                        <div class="stats-info">
+                            <h3>Cầu</h3>
+                            <p>25 cầu</p>
+                            <small>Tổng chiều dài: 1.2 km</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <div class="stats-icon drainage">
+                            <i class="fas fa-water"></i>
+                        </div>
+                        <div class="stats-info">
+                            <h3>Mương thoát nước</h3>
+                            <p>89 tuyến</p>
+                            <small>Tổng chiều dài: 45.3 km</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <div class="stats-icon tree">
+                            <i class="fas fa-tree"></i>
+                        </div>
+                        <div class="stats-info">
+                            <h3>Cây xanh</h3>
+                            <p>12,450 cây</p>
+                            <small>Trên 15 tuyến phố</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Phường</label>
+                        <select class="form-control" id="filterWard">
+                            <option value="">Tất cả</option>
+                            <option value="hoaminh">Hòa Minh</option>
+                            <option value="hoakhanhnam">Hòa Khánh Nam</option>
+                            <option value="hoakhanhbac">Hòa Khánh Bắc</option>
+                            <option value="hoahiepnam">Hòa Hiệp Nam</option>
+                            <option value="hoahiepbac">Hòa Hiệp Bắc</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Trạng thái</label>
+                        <select class="form-control" id="filterStatus">
+                            <option value="">Tất cả</option>
+                            <option value="good">Tốt</option>
+                            <option value="normal">Bình thường</option>
+                            <option value="bad">Cần sửa chữa</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Tìm kiếm</label>
+                        <div class="search-box">
+                            <input type="text" class="form-control" id="searchKeyword" 
+                                   placeholder="Nhập tên đường, địa điểm...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab Navigation -->
+        <ul class="nav-tabs">
+            <li class="nav-item">
+                <button class="nav-link active" data-tab="roads">
+                    <i class="fas fa-road"></i> Tuyến đường
+                </button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" data-tab="bridges">
+                    <i class="fas fa-archway"></i> Cầu
+                </button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" data-tab="drainage">
+                    <i class="fas fa-water"></i> Mương thoát nước
+                </button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" data-tab="trees">
+                    <i class="fas fa-tree"></i> Cây xanh
+                </button>
+            </li>
+        </ul>
+
+        <!-- Tab Content -->
+        <div class="tab-content">
+            <!-- Tab Tuyến đường -->
+            <div class="tab-pane active" id="roads">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th width="50">STT</th>
+                                <th width="200">Tên đường</th>
+                                <th width="150">Phường</th>
+                                <th width="100">Chiều dài (m)</th>
+                                <th width="100">Chiều rộng (m)</th>
+                                <th width="150">Kết cấu mặt đường</th>
+                                <th width="120">Năm xây dựng</th>
+                                <th width="140">Trạng thái</th>
+                                <th width="100">Chi tiết</th>
+                            </tr>
+                        </thead>
+                        <tbody id="roadsTable"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Tab Cầu -->
+            <div class="tab-pane" id="bridges">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th width="50">STT</th>
+                                <th width="200">Tên cầu</th>
+                                <th width="150">Phường</th>
+                                <th width="100">Chiều dài (m)</th>
+                                <th width="100">Chiều rộng (m)</th>
+                                <th width="150">Kết cấu</th>
+                                <th width="120">Tải trọng</th>
+                                <th width="140">Trạng thái</th>
+                                <th width="100">Chi tiết</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bridgesTable"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Tab Mương thoát nước -->
+            <div class="tab-pane" id="drainage">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th width="50">STT</th>
+                                <th width="200">Tên mương</th>
+                                <th width="150">Phường</th>
+                                <th width="100">Chiều dài (m)</th>
+                                <th width="100">Chiều rộng (m)</th>
+                                <th width="100">Chiều sâu (m)</th>
+                                <th width="150">Kết cấu</th>
+                                <th width="140">Trạng thái</th>
+                                <th width="100">Chi tiết</th>
+                            </tr>
+                        </thead>
+                        <tbody id="drainageTable"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Tab Cây xanh -->
+            <div class="tab-pane" id="trees">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th width="50">STT</th>
+                                <th width="200">Tuyến đường</th>
+                                <th width="150">Phường</th>
+                                <th width="150">Loại cây</th>
+                                <th width="100">Số lượng</th>
+                                <th width="120">Năm trồng</th>
+                                <th width="100">Khoảng cách</th>
+                                <th width="140">Trạng thái</th>
+                                <th width="100">Chi tiết</th>
+                            </tr>
+                        </thead>
+                        <tbody id="treesTable"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination-section">
+            <div class="row">
+                <div class="col-6">
+                    <div class="pagination-info" id="paginationInfo"></div>
+                </div>
+                <div class="col-6">
+                    <ul class="pagination" id="pagination"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/quanlyhatang.js"></script>
+    <script src="../../assets/js/hcbot.min.js" data-client-id="aZ99B0Ddnl5m"></script>
+</body>
+</html>

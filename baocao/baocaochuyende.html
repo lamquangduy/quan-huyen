@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo cáo chuyên đề - UBND Quận Liên Chiểu</title>
+    <link rel="icon" type="image/png" href="../assets/images/icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/baocaochuyende.css">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Sidebar -->
+    <div id="sidebar"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="page-header">
+            <h1>Báo cáo chuyên đề</h1>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <!-- First row with year and department -->
+            <div class="row">
+                <!-- Năm báo cáo -->
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Năm báo cáo</label>
+                        <select class="form-control" id="reportYear">
+                            <option value="2024">2024</option>
+                            <option value="2023">2023</option>
+                            <option value="2022">2022</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Phòng ban -->
+                <div class="col-md-7">
+                    <div class="form-group">
+                        <label>Phòng ban</label>
+                        <select class="form-control" id="department" onchange="updateReportNames()">
+                            <option value="">-- Chọn phòng ban --</option>
+                            <option value="phong-giao-duc">Phòng Giáo dục và Đào tạo</option>
+                            <option value="phong-kinh-te">Phòng Kinh tế</option>
+                            <option value="phong-ldtbxh">Phòng Lao động - Thương binh và Xã hội</option>
+                            <option value="phong-noi-vu">Phòng Nội vụ</option>
+                            <option value="phong-quan-ly-do-thi">Phòng Quản lý đô thị</option>
+                            <option value="phong-tnmt">Phòng Tài nguyên và Môi trường</option>
+                            <option value="phong-tu-phap">Phòng Tư pháp</option>
+                            <option value="phong-vhtt">Phòng Văn hóa Thông tin</option>
+                            <option value="phong-y-te">Phòng Y tế</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Second row with report name and buttons -->
+            <div class="report-actions">
+                <div class="report-name-container">
+                    <label>Tên báo cáo chuyên đề</label>
+                    <select class="form-control" id="reportName" disabled>
+                        <option value="">-- Chọn tên báo cáo chuyên đề --</option>
+                    </select>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-secondary" onclick="resetForm()">
+                        <i class="fas fa-undo"></i> Đặt lại
+                    </button>
+                    <button class="btn btn-primary" onclick="viewReport()">
+                        <i class="fas fa-eye"></i> Xem báo cáo
+                    </button>
+                    <button class="btn btn-success" onclick="downloadReport()">
+                        <i class="fas fa-download"></i> Tải báo cáo
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Report Preview -->
+        <div class="report-preview mt-4" id="reportPreview">
+            <!-- Báo cáo sẽ được hiển thị ở đây -->
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/baocaochuyende.js"></script>
+    <script src="../assets/js/hcbot.min.js" data-client-id="aZ99B0Ddnl5m"></script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Trường học - UBND Quận Liên Chiểu</title>
+    <link rel="icon" type="image/png" href="../../assets/images/icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/quanlytruonghoc.css">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Sidebar -->
+    <div id="sidebar"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="page-header">
+            <h1>Quản lý Trường học</h1>
+            <div class="header-actions">
+                <button class="btn btn-primary" onclick="openAddForm()">
+                    <i class="fas fa-plus"></i> Thêm mới
+                </button>
+                <button class="btn btn-excel" onclick="exportToExcel()">
+                    <i class="fas fa-file-excel"></i> Xuất Excel
+                </button>
+            </div>
+        </div>
+
+        <!-- Thống kê nhanh -->
+        <div class="stats-section">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <div class="stats-icon total">
+                            <i class="fas fa-school"></i>
+                        </div>
+                        <div class="stats-info">
+                            <h3>Tổng số trường</h3>
+                            <p id="totalSchools">0</p>
+                            <small>Đang hoạt động</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <div class="stats-icon students">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="stats-info">
+                            <h3>Tổng học sinh</h3>
+                            <p id="totalStudents">0</p>
+                            <small>Năm học 2023-2024</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <div class="stats-icon standard">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <div class="stats-info">
+                            <h3>Đạt chuẩn</h3>
+                            <p id="standardSchools">0</p>
+                            <small>Trường chuẩn quốc gia</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <div class="stats-icon achievement">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="stats-info">
+                            <h3>Thi đua</h3>
+                            <p id="awardedSchools">0</p>
+                            <small>Đạt thành tích xuất sắc</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Cấp học</label>
+                        <select class="form-control" id="educationLevelFilter">
+                            <option value="">Tất cả</option>
+                            <option value="mamnon">Mầm non</option>
+                            <option value="tieuhoc">Tiểu học</option>
+                            <option value="thcs">THCS</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Phường</label>
+                        <select class="form-control" id="wardFilter">
+                            <option value="">Tất cả</option>
+                            <option value="hoaMinh">Hòa Minh</option>
+                            <option value="hoaKhanhNam">Hòa Khánh Nam</option>
+                            <option value="hoaKhanhBac">Hòa Khánh Bắc</option>
+                            <option value="hoaHiepNam">Hòa Hiệp Nam</option>
+                            <option value="hoaHiepBac">Hòa Hiệp Bắc</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Loại trường</label>
+                        <select class="form-control" id="schoolTypeFilter">
+                            <option value="">Tất cả</option>
+                            <option value="public">Công lập</option>
+                            <option value="private">Tư thục</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Tìm kiếm</label>
+                        <div class="search-box">
+                            <input type="text" class="form-control" id="searchInput" 
+                                   placeholder="Tên trường, địa chỉ...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table Section -->
+        <div class="table-section">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th width="50">STT</th>
+                            <th width="200">Tên trường</th>
+                            <th width="100">Cấp học</th>
+                            <th width="200">Địa chỉ</th>
+                            <th width="120">Phường</th>
+                            <th width="100">Loại trường</th>
+                            <th width="100">Số học sinh</th>
+                            <th width="120">Trường chuẩn</th>
+                            <th width="100">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody id="schoolsTable"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination-section">
+            <div class="row">
+                <div class="col-6">
+                    <div class="pagination-info" id="paginationInfo">
+                        Hiển thị 0-0 trong tổng số 0 trường
+                    </div>
+                </div>
+                <div class="col-6">
+                    <ul class="pagination" id="pagination"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/quanlytruonghoc.js"></script>
+    <script src="../../assets/js/hcbot.min.js" data-client-id="aZ99B0Ddnl5m"></script>
+</body>
+</html>

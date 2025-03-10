@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo cáo Kinh tế - Xã hội - UBND Quận Liên Chiểu</title>
+    <link rel="icon" type="image/png" href="../assets/images/icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/baocaoktxh.css">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Sidebar -->
+    <div id="sidebar"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="page-header">
+            <div class="header-title">
+                <h1>MỘT SỐ CHỈ TIÊU KẾ HOẠCH NĂM 2024 UBND QUẬN LIÊN CHIỂU</h1>
+                <p class="sub-title">(Ban hành kèm theo Quyết định số: 2779/QĐ-UBND ngày 15/12/2023 của UBND thành phố Đà Nẵng)</p>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-excel" onclick="downloadExcel()">
+                    <i class="fas fa-file-excel"></i> Tải file Excel
+                </button>
+            </div>
+        </div>
+
+        <!-- Report Tabs -->
+        <div class="report-tabs">
+            <button class="tab-btn active" data-tab="summary">Tổng hợp</button>
+            <button class="tab-btn" data-tab="wards">Theo phường</button>
+        </div>
+
+        <!-- Summary Tab Content -->
+        <div id="summaryTab" class="tab-content active">
+            <div class="table-responsive">
+                <table class="report-table">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">TT</th>
+                            <th rowspan="2">Chỉ tiêu</th>
+                            <th rowspan="2">ĐVT</th>
+                            <th rowspan="2">Liên Chiểu</th>
+                            <th rowspan="2">Quý 1</th>
+                            <th rowspan="2">Tỷ lệ % Quý 1</th>
+                            <th rowspan="2">6 tháng</th>
+                            <th rowspan="2">9 tháng</th>
+                            <th rowspan="2">Năm 2024</th>
+                        </tr>
+                    </thead>
+                    <tbody id="summaryTableBody">
+                        <!-- Dữ liệu sẽ được thêm bằng JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Wards Tab Content -->
+        <div id="wardsTab" class="tab-content">
+            <div class="table-responsive">
+                <table class="report-table">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">TT</th>
+                            <th rowspan="2">Chỉ tiêu</th>
+                            <th rowspan="2">ĐVT</th>
+                            <th rowspan="2">Kế hoạch thành phố</th>
+                            <th rowspan="2">Kế hoạch năm 2024 quận</th>
+                            <th colspan="5">Phường</th>
+                        </tr>
+                        <tr>
+                            <th>Hòa Minh</th>
+                            <th>Hòa Khánh Nam</th>
+                            <th>Hòa Khánh Bắc</th>
+                            <th>Hòa Hiệp Nam</th>
+                            <th>Hòa Hiệp Bắc</th>
+                        </tr>
+                    </thead>
+                    <tbody id="wardsTableBody">
+                        <!-- Dữ liệu sẽ được thêm bằng JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Note Section -->
+        <div class="note-section">
+            <p class="note">Ghi chú: Các đơn vị bổ sung số liệu kết quả thực hiện quý 1/2024 so với chỉ tiêu giao tại cột màu vàng</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/baocaoktxh.js"></script>
+    <script src="../assets/js/hcbot.min.js" data-client-id="aZ99B0Ddnl5m"></script>
+</body>
+</html>

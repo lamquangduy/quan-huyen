@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bản đồ Quy hoạch - UBND Quận Liên Chiểu</title>
+    <link rel="icon" type="image/png" href="../assets/images/icon.png">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/quyhoach.css">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Sidebar -->
+    <div id="sidebar"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1>Bản đồ Quy hoạch Quận Liên Chiểu</h1>
+        </div>
+
+        <!-- Control Panel -->
+        <div class="control-panel">
+            <!-- Filter Section -->
+            <div class="filter-section">
+                <div class="filter-group">
+                    <label>Loại quy hoạch</label>
+                    <select id="planningType" class="filter-select">
+                        <option value="">Tất cả</option>
+                        <option value="dothi">Quy hoạch đô thị</option>
+                        <option value="datdai">Quy hoạch sử dụng đất</option>
+                        <option value="giao-thong">Quy hoạch giao thông</option>
+                        <option value="khac">Khác</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Năm quy hoạch</label>
+                    <select id="yearFilter" class="filter-select">
+                        <option value="">Tất cả</option>
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Trạng thái</label>
+                    <select id="statusFilter" class="filter-select">
+                        <option value="">Tất cả</option>
+                        <option value="duyet">Đã duyệt</option>
+                        <option value="choduyet">Chờ duyệt</option>
+                        <option value="dieuchinh">Điều chỉnh</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Tìm kiếm</label>
+                    <div class="search-container">
+                        <input type="text" id="searchInput" class="search-input" placeholder="Nhập từ khóa...">
+                        <button id="searchBtn" class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map Controls -->
+            <div class="map-controls">
+                <button id="toggleBoundary" class="control-btn">
+                    <i class="fas fa-border-all"></i>
+                    <span>Ranh giới</span>
+                </button>
+                <button id="exportData" class="control-btn">
+                    <i class="fas fa-download"></i>
+                    <span>Xuất dữ liệu</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Map Container -->
+        <div class="map-container">
+            <!-- Main Map -->
+            <div id="map"></div>
+
+            <!-- Layer Controls -->
+            <div class="layer-controls">
+                <h4>Lớp bản đồ</h4>
+                <div class="layer-item">
+                    <input type="checkbox" id="layerSatellite" checked>
+                    <label for="layerSatellite">Vệ tinh</label>
+                </div>
+                <div class="layer-item">
+                    <input type="checkbox" id="layerTerrain" checked>
+                    <label for="layerTerrain">Địa hình</label>
+                </div>
+            </div>
+
+             <!-- Legend -->
+            <div class="map-legend">
+                <h4>Chú thích</h4>
+                <div class="legend-section">
+                    <h5>Quy hoạch</h5>
+                    <div class="legend-item">
+                        <span class="legend-icon road"></span>
+                        <span>Đường giao thông</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-icon water"></span>
+                        <span>Khu vực cấp nước</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-icon electric"></span>
+                        <span>Khu vực điện</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-icon school"></span>
+                        <span>Khu vực giáo dục</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-icon medical"></span>
+                        <span>Khu vực y tế</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-icon market"></span>
+                        <span>Khu vực chợ</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-icon park"></span>
+                        <span>Khu vực cây xanh</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-icon sport"></span>
+                        <span>Khu vực thể thao</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistics Section -->
+        <div class="stats-section">
+            <div class="stats-card">
+                <h4>Thống kê quy hoạch</h4>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <i class="fas fa-map"></i>
+                        <span class="stat-value" id="totalPlans">0</span>
+                        <span class="stat-label">Tổng số quy hoạch</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span class="stat-value" id="approvedPlans">0</span>
+                        <span class="stat-label">Đã duyệt</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-clock"></i>
+                        <span class="stat-value" id="pendingPlans">0</span>
+                        <span class="stat-label">Chờ duyệt</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-edit"></i>
+                        <span class="stat-value" id="adjustingPlans">0</span>
+                        <span class="stat-label">Điều chỉnh</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.heat"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/quyhoach.js"></script>
+</body>
+</html>

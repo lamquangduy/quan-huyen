@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dự án đầu tư - UBND Quận Liên Chiểu</title>
+    <link rel="icon" type="image/png" href="../../assets/images/icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/duandautu.css">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Sidebar -->
+    <div id="sidebar"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="page-header">
+            <h1>Danh sách dự án đầu tư</h1>
+            <div class="header-actions">
+                <button class="btn btn-primary"><i class="fas fa-plus"></i> Thêm mới</button>
+                <button class="btn btn-outline-secondary"><i class="fas fa-file-export"></i> Xuất Excel</button>
+            </div>
+        </div>
+
+        <div class="filter-section">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Năm thực hiện</label>
+                        <select class="form-control" id="filterYear">
+                            <option value="">Tất cả</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Nguồn vốn</label>
+                        <select class="form-control" id="filterFunding">
+                            <option value="">Tất cả</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Tìm kiếm</label>
+                        <input type="text" class="form-control" id="searchInput" placeholder="Nhập tên dự án, địa điểm...">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-section">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th width="50">STT</th>
+                            <th>Tên dự án</th>
+                            <th>Địa điểm xây dựng</th>
+                            <th>Năm thực hiện</th>
+                            <th>Nguồn vốn</th>
+                            <th>Quyết định phê duyệt</th>
+                            <th width="150">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody id="projectList">
+                        <!-- Data sẽ được load bằng JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="pagination-section">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="pagination-info" id="paginationInfo">
+                        <!-- Thông tin phân trang sẽ được load bằng JavaScript -->
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <ul class="pagination" id="pagination">
+                        <!-- Phân trang sẽ được load bằng JavaScript -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/duandautu.js"></script>
+</body>
+</html>

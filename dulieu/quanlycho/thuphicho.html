@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thu phí chợ - UBND Quận Liên Chiểu</title>
+    <link rel="icon" type="image/png" href="../../assets/images/icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/thuphicho.css">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Sidebar -->
+    <div id="sidebar"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="page-header">
+            <h1>Thu phí chợ</h1>
+            <div class="header-actions">
+                <button class="btn btn-primary" onclick="openAddModal()">
+                    <i class="fas fa-plus"></i> Thu phí mới
+                </button>
+                <button class="btn btn-outline-secondary">
+                    <i class="fas fa-file-export"></i> Xuất Excel
+                </button>
+            </div>
+        </div>
+
+        <div class="filter-section">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Chợ</label>
+                        <select class="form-control" id="filterMarket">
+                            <option value="">Tất cả</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Kỳ thu phí</label>
+                        <select class="form-control" id="filterPeriod">
+                            <option value="">Tất cả</option>
+                            <option value="1">Tháng 1/2024</option>
+                            <option value="2">Tháng 2/2024</option>
+                            <option value="3">Tháng 3/2024</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Trạng thái</label>
+                        <select class="form-control" id="filterStatus">
+                            <option value="">Tất cả</option>
+                            <option value="paid">Đã thu</option>
+                            <option value="unpaid">Chưa thu</option>
+                            <option value="partial">Thu một phần</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Tìm kiếm</label>
+                        <input type="text" class="form-control" id="searchKeyword" placeholder="Nhập tên chủ hộ, số lô...">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Thống kê nhanh -->
+        <div class="stats-section">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <div class="stats-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stats-info">
+                            <h3>Tổng số hộ</h3>
+                            <p>450 hộ</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <div class="stats-icon green">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stats-info">
+                            <h3>Đã thu</h3>
+                            <p>380 hộ</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <div class="stats-icon red">
+                            <i class="fas fa-times-circle"></i>
+                        </div>
+                        <div class="stats-info">
+                            <h3>Chưa thu</h3>
+                            <p>70 hộ</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <div class="stats-icon blue">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <div class="stats-info">
+                            <h3>Tổng thu</h3>
+                            <p>225.000.000đ</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-section">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th width="50">STT</th>
+                            <th width="150">Tên chủ hộ</th>
+                            <th width="90">Số lô</th>
+                            <th width="120">Kỳ thu phí</th>
+                            <th width="120">Số tiền</th>
+                            <th width="120">Đã thu</th>
+                            <th width="120">Còn nợ</th>
+                            <th width="120">Ngày thu</th>
+                            <th width="120">Trạng thái</th>
+                            <th width="150">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody id="feeList">
+                        <!-- Data sẽ được load bằng JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="pagination-section">
+            <div class="row align-items-center">
+                <div class="col-6">
+                    <div class="pagination-info" id="paginationInfo">
+                        <!-- Thông tin phân trang -->
+                    </div>
+                </div>
+                <div class="col-6">
+                    <nav class="pagination-nav">
+                        <ul class="pagination" id="pagination">
+                            <!-- Phân trang -->
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Thu phí -->
+    <div class="modal" id="feeModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modalTitle">Thu phí mới</h4>
+                    <button type="button" class="close" onclick="closeModal()">×</button>
+                </div>
+                <div class="modal-body">
+                    <form id="feeForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Chợ <span class="required">*</span></label>
+                                    <select class="form-control" id="marketId" required>
+                                        <option value="">Chọn chợ</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Kỳ thu phí <span class="required">*</span></label>
+                                    <select class="form-control" id="periodId" required>
+                                        <option value="">Chọn kỳ thu phí</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Hộ kinh doanh <span class="required">*</span></label>
+                                    <select class="form-control" id="traderId" required>
+                                        <option value="">Chọn hộ kinh doanh</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Số lô/sạp</label>
+                                    <input type="text" class="form-control" id="stallNumber" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Số tiền phải thu <span class="required">*</span></label>
+                                    <input type="number" class="form-control" id="totalAmount" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Số tiền thu <span class="required">*</span></label>
+                                    <input type="number" class="form-control" id="paidAmount" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Ngày thu <span class="required">*</span></label>
+                                    <input type="date" class="form-control" id="paidDate" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Người thu <span class="required">*</span></label>
+                                    <input type="text" class="form-control" id="collector" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Ghi chú</label>
+                            <textarea class="form-control" id="note" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal()">Đóng</button>
+                    <button type="button" class="btn btn-primary" onclick="saveFee()">Lưu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/thuphicho.js"></script>
+    <script src="../../assets/js/hcbot.min.js" data-client-id="aZ99B0Ddnl5m"></script>
+</body>
+</html>

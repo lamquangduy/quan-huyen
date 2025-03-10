@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông tin chợ - UBND Quận Liên Chiểu</title>
+    <link rel="icon" type="image/png" href="../../assets/images/icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/thongtincho.css">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Sidebar -->
+    <div id="sidebar"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="page-header">
+            <h1>Thông tin chợ</h1>
+            <div class="header-actions">
+                <button class="btn btn-primary"><i class="fas fa-plus"></i> Thêm mới</button>
+                <button class="btn btn-outline-secondary"><i class="fas fa-file-export"></i> Xuất Excel</button>
+            </div>
+        </div>
+
+        <div class="filter-section">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Tên chợ</label>
+                        <input type="text" class="form-control" id="searchName" placeholder="Nhập tên chợ...">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Địa chỉ</label>
+                        <input type="text" class="form-control" id="searchAddress" placeholder="Nhập địa chỉ...">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Quy mô</label>
+                        <select class="form-control" id="filterScale">
+                            <option value="">Tất cả</option>
+                            <option value="1">Hạng 1</option>
+                            <option value="2">Hạng 2</option>
+                            <option value="3">Hạng 3</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Trạng thái</label>
+                        <select class="form-control" id="filterStatus">
+                            <option value="">Tất cả</option>
+                            <option value="active">Đang hoạt động</option>
+                            <option value="inactive">Tạm ngưng</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-section">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th width="50">STT</th>
+                            <th width="200">Tên chợ</th>
+                            <th>Địa chỉ</th>
+                            <th width="100">Quy mô</th>
+                            <th width="120">Số lô/sạp</th>
+                            <th width="150">Trạng thái</th>
+                            <th width="150">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody id="marketList">
+                        <!-- Data sẽ được load bằng JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="pagination-section">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="pagination-info" id="paginationInfo">
+                        <!-- Thông tin phân trang -->
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <ul class="pagination" id="pagination">
+                        <!-- Phân trang -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/thongtincho.js"></script>
+    <script src="../../assets/js/hcbot.min.js" data-client-id="aZ99B0Ddnl5m"></script>
+</body>
+</html>

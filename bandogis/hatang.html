@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bản đồ Hạ tầng & Hộ Kinh doanh - UBND Quận Liên Chiểu</title>
+    <link rel="icon" type="image/png" href="../assets/images/icon.png">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/map.css">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Sidebar -->
+    <div id="sidebar"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1>Bản đồ Hạ tầng & Hộ Kinh doanh Quận Liên Chiểu</h1>
+        </div>
+
+        <!-- Control Panel -->
+        <div class="control-panel">
+             <!-- Filter Section -->
+             <div class="filter-section">
+                <!-- Phường -->
+                <div class="filter-group">
+                    <label for="ward">Phường</label>
+                    <select id="ward" class="filter-select">
+                        <option value="">Tất cả</option>
+                        <option value="hoakhanhbac">Hòa Khánh Bắc</option>
+                        <option value="hoakhanhnam">Hòa Khánh Nam</option>
+                        <option value="hoaminh">Hòa Minh</option>
+                        <option value="hoahiepbac">Hòa Hiệp Bắc</option>
+                        <option value="hoahiepnam">Hòa Hiệp Nam</option>
+                    </select>
+                </div>
+
+                <!-- Loại đối tượng -->
+                <div class="filter-group">
+                    <label for="dataType">Loại dữ liệu</label>
+                    <select id="dataType" class="filter-select">
+                        <option value="all">Tất cả</option>
+                        <option value="infrastructure">Hạ tầng</option>
+                        <option value="business">Hộ kinh doanh</option>
+                    </select>
+                </div>
+
+                <!-- Infrastructure Filters -->
+                <div class="filter-group infrastructure-filters">
+                    <label for="infrastructureType">Loại hạ tầng</label>
+                    <select id="infrastructureType" class="filter-select">
+                        <option value="">Tất cả</option>
+                        <option value="road">Đường giao thông</option>
+                        <option value="water">Cấp thoát nước</option>
+                        <option value="electric">Điện</option>
+                        <option value="school">Trường học</option>
+                        <option value="medical">Y tế</option>
+                        <option value="market">Chợ</option>
+                        <option value="park">Công viên - Cây xanh</option>
+                        <option value="sport">Thể thao</option>
+                    </select>
+                </div>
+
+                <!-- Business Filters -->
+                 <div class="filter-group business-filters">
+                    <label for="businessType">Loại hình kinh doanh</label>
+                    <select id="businessType" class="filter-select">
+                        <option value="">Tất cả</option>
+                        <option value="retail">Bán lẻ</option>
+                        <option value="food">Ăn uống</option>
+                        <option value="service">Dịch vụ</option>
+                        <option value="production">Sản xuất</option>
+                        <option value="other">Khác</option>
+                    </select>
+                </div>
+
+                <!-- Tìm kiếm -->
+                <div class="filter-group">
+                    <label for="searchInput">Tìm kiếm</label>
+                    <div class="search-container">
+                        <input type="text" id="searchInput" class="search-input" placeholder="Nhập từ khóa...">
+                        <button id="searchBtn" class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map Controls -->
+            <div class="map-controls">
+                <button id="toggleHeatmap" class="control-btn">
+                    <i class="fas fa-layer-group"></i>
+                    <span>Bản đồ nhiệt</span>
+                </button>
+                 <button id="exportData" class="control-btn">
+                    <i class="fas fa-download"></i>
+                    <span>Xuất dữ liệu</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Map Container -->
+        <div class="map-container">
+            <!-- Main Map -->
+            <div id="map"></div>
+
+            <!-- Layer Controls -->
+            <div class="layer-item">
+                <input type="radio" id="layerSatellite" name="mapLayer" value="satellite"> <label for="layerSatellite">Vệ tinh</label>
+            </div>
+            <div class="layer-item">
+                <input type="radio" id="layerTerrain" name="mapLayer" value="terrain"> <label for="layerTerrain">Địa hình</label>
+            </div>
+            <div class="layer-item">
+                <input type="radio" id="layerNormal" name="mapLayer" value="normal" checked> <label for="layerNormal">Bản đồ thường</label>
+            </div>
+
+           <!-- Legend -->
+            <div class="map-legend">
+                <h4>Chú thích</h4>
+                <!-- Infrastructure Legend -->
+                <div class="legend-section infrastructure-legend">
+                    <h5>Hạ tầng</h5>
+                    <div class="legend-item">
+                        <span class="legend-icon road"></span>
+                        <span>Đường giao thông</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-icon water"></span>
+                        <span>Cấp thoát nước</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-icon electric"></span>
+                        <span>Điện</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-icon school"></span>
+                        <span>Trường học</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-icon medical"></span>
+                        <span>Y tế</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-icon market"></span>
+                        <span>Chợ</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-icon park"></span>
+                        <span>Công viên - Cây xanh</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-icon sport"></span>
+                        <span>Thể thao</span>
+                    </div>
+                </div>
+
+                <!-- Business Legend -->
+                <div class="legend-section business-legend">
+                    <h5>Hộ kinh doanh</h5>
+                    <div class="legend-item">
+                        <span class="legend-icon business-retail"></span>
+                        <span>Bán lẻ</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-icon business-food"></span>
+                        <span>Ăn uống</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-icon business-service"></span>
+                        <span>Dịch vụ</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-icon business-production"></span>
+                        <span>Sản xuất</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistics Section -->
+        <div class="stats-section">
+           <!-- Infrastructure Stats -->
+            <div class="stats-card infrastructure-stats">
+                <h4>Thống kê hạ tầng</h4>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <i class="fas fa-road"></i>
+                        <span class="stat-value" id="roadLength">245.6</span>
+                        <span class="stat-label">km đường</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-faucet"></i>
+                        <span class="stat-value" id="waterCoverage">98.5</span>
+                        <span class="stat-label">% cấp nước</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-bolt"></i>
+                        <span class="stat-value" id="electricCoverage">100</span>
+                        <span class="stat-label">% phủ điện</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-school"></i>
+                        <span class="stat-value" id="schoolCount">42</span>
+                        <span class="stat-label">trường học</span>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Business Stats -->
+            <div class="stats-card business-stats">
+                <h4>Thống kê hộ kinh doanh</h4>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <i class="fas fa-store"></i>
+                        <span class="stat-value" id="totalBusiness">1,234</span>
+                        <span class="stat-label">Tổng số hộ</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="stat-value" id="retailCount">456</span>
+                        <span class="stat-label">Bán lẻ</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-utensils"></i>
+                        <span class="stat-value" id="foodCount">321</span>
+                        <span class="stat-label">Ăn uống</span>
+                    </div>
+                     <div class="stat-item">
+                        <i class="fas fa-cogs"></i>
+                        <span class="stat-value" id="serviceCount">457</span>
+                        <span class="stat-label">Dịch vụ</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts -->
+             <div class="charts-container">
+                <div class="chart-card">
+                    <h4>Phân bố hộ kinh doanh theo loại hình</h4>
+                    <canvas id="businessTypeChart"></canvas>
+                </div>
+                 <div class="chart-card">
+                     <h4>Phân bố hộ kinh doanh theo phường</h4>
+                     <canvas id="businessWardChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.heat"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/map.js"></script>
+    <script src="https://unpkg.com/leaflet.heat"></script>
+</body>
+</html>

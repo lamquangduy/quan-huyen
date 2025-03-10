@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý CLB Thể thao - UBND Quận Liên Chiểu</title>
+    <link rel="icon" type="image/png" href="../../assets/images/icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/quanlyclb.css">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Sidebar -->
+    <div id="sidebar"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="page-header">
+            <h1>Quản lý CLB Thể thao</h1>
+            <div class="header-actions">
+                <button class="btn btn-primary" onclick="openAddForm()">
+                    <i class="fas fa-plus"></i> Thêm mới
+                </button>
+                <button class="btn btn-excel" onclick="exportToExcel()">
+                    <i class="fas fa-file-excel"></i> Xuất Excel
+                </button>
+            </div>
+        </div>
+
+        <!-- Thống kê nhanh -->
+        <div class="stats-section">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <div class="stats-icon total">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stats-info">
+                            <h3>Tổng số CLB</h3>
+                            <p id="totalClubs">0</p>
+                            <small>Đang hoạt động</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <div class="stats-icon members">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <div class="stats-info">
+                            <h3>Tổng hội viên</h3>
+                            <p id="totalMembers">0</p>
+                            <small>Thành viên tích cực</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <div class="stats-icon events">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="stats-info">
+                            <h3>Hoạt động/Sự kiện</h3>
+                            <p id="totalEvents">0</p>
+                            <small>Trong tháng</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <div class="stats-icon achievements">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="stats-info">
+                            <h3>Thành tích</h3>
+                            <p id="totalAchievements">0</p>
+                            <small>Giải thưởng đạt được</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Môn thể thao</label>
+                        <select class="form-control" id="sportTypeFilter">
+                            <option value="">Tất cả</option>
+                            <option value="football">Bóng đá</option>
+                            <option value="volleyball">Bóng chuyền</option>
+                            <option value="badminton">Cầu lông</option>
+                            <option value="tennis">Tennis</option>
+                            <option value="tabletennis">Bóng bàn</option>
+                            <option value="martial">Võ thuật</option>
+                            <option value="chess">Cờ vua/tướng</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Phường</label>
+                        <select class="form-control" id="wardFilter">
+                            <option value="">Tất cả</option>
+                            <option value="hoaMinh">Hòa Minh</option>
+                            <option value="hoaKhanhNam">Hòa Khánh Nam</option>
+                            <option value="hoaKhanhBac">Hòa Khánh Bắc</option>
+                            <option value="hoaHiepNam">Hòa Hiệp Nam</option>
+                            <option value="hoaHiepBac">Hòa Hiệp Bắc</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Trạng thái</label>
+                        <select class="form-control" id="statusFilter">
+                            <option value="">Tất cả</option>
+                            <option value="active">Đang hoạt động</option>
+                            <option value="inactive">Tạm ngưng</option>
+                            <option value="preparing">Đang thành lập</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Tìm kiếm</label>
+                        <div class="search-box">
+                            <input type="text" class="form-control" id="searchInput" 
+                                   placeholder="Tên CLB, người phụ trách...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table Section -->
+        <div class="table-section">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th width="50">STT</th>
+                            <th width="200">Tên CLB</th>
+                            <th width="120">Môn thể thao</th>
+                            <th width="120">Phường</th>
+                            <th width="150">Người phụ trách</th>
+                            <th width="100">Số thành viên</th>
+                            <th width="120">Lịch hoạt động</th>
+                            <th width="120">Trạng thái</th>
+                            <th width="100">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody id="clubsTable"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination-section">
+            <div class="row">
+                <div class="col-6">
+                    <div class="pagination-info" id="paginationInfo">
+                        Hiển thị 0-0 trong tổng số 0 câu lạc bộ
+                    </div>
+                </div>
+                <div class="col-6">
+                    <ul class="pagination" id="pagination"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/quanlyclb.js"></script>
+    <script src="../../assets/js/hcbot.min.js" data-client-id="aZ99B0Ddnl5m"></script>
+</body>
+</html>

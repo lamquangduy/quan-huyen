@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hồ sơ pháp lý - UBND Quận Liên Chiểu</title>
+    <link rel="icon" type="image/png" href="../../assets/images/icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/hosophaply.css">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Sidebar -->
+    <div id="sidebar"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="page-header">
+            <h1>Danh sách hồ sơ pháp lý</h1>
+            <div class="header-actions">
+                <button class="btn btn-primary"><i class="fas fa-plus"></i> Thêm mới</button>
+                <button class="btn btn-outline-secondary"><i class="fas fa-file-export"></i> Xuất Excel</button>
+            </div>
+        </div>
+
+        <div class="filter-section">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Loại văn bản</label>
+                        <select class="form-control" id="filterType">
+                            <option value="">Tất cả</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Dự án</label>
+                        <select class="form-control" id="filterProject">
+                            <option value="">Tất cả</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Năm ban hành</label>
+                        <select class="form-control" id="filterYear">
+                            <option value="">Tất cả</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Tìm kiếm</label>
+                        <input type="text" class="form-control" id="searchInput" placeholder="Nhập số hiệu, trích yếu...">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-section">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th width="50">STT</th>
+                            <th width="150">Số hiệu</th>
+                            <th>Trích yếu</th>
+                            <th width="120">Ngày ban hành</th>
+                            <th width="150">Loại văn bản</th>
+                            <th width="200">Dự án</th>
+                            <th width="150">File</th>
+                            <th width="150">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody id="documentList">
+                        <!-- Data sẽ được load bằng JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="pagination-section">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="pagination-info" id="paginationInfo">
+                        <!-- Thông tin phân trang -->
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <ul class="pagination" id="pagination">
+                        <!-- Phân trang -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/hosophaply.js"></script>
+    <script src="../../assets/js/hcbot.min.js" data-client-id="aZ99B0Ddnl5m"></script>
+</body>
+</html>

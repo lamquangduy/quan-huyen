@@ -1,0 +1,267 @@
+/* Reset CSS và thiết lập cơ bản */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+    background: #f5f7fa;
+}
+
+/* Header styles */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.header-logo img {
+    height: 40px;
+}
+
+.header-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1e3a8a;
+}
+
+.header-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-user img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+/* Sidebar styles */
+.sidebar {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    bottom: 0;
+    width: 260px;
+    background: #ffffff;
+    color: #333;
+    overflow-y: auto;
+    z-index: 900;
+    border-right: 1px solid #e0e0e0;
+}
+
+.menu-container {
+    padding: 0;
+}
+
+/* Menu item styles */
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px 12px 20px;
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    position: relative;
+    font-size: 14px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.menu-item:hover {
+    background: #f8f9fa;
+    color: #2957a4;
+}
+
+.menu-item.active {
+    background: #f8f9fa;
+    color: #2957a4;
+}
+
+.menu-item i {
+    width: 20px;
+    text-align: center;
+    margin-right: 10px;
+    font-size: 16px;
+    color: #666;
+}
+
+.menu-item:hover i {
+    color: #2957a4;
+}
+
+.menu-item span {
+    flex: 1;
+}
+
+.menu-item .arrow {
+    margin-left: auto;
+    font-size: 12px;
+    color: #999;
+    transition: transform 0.2s;
+}
+
+/* Submenu styles */
+.submenu {
+    background: #ffffff;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.submenu .menu-item {
+    padding-left: 45px;
+    background: #ffffff;
+}
+
+.submenu.active {
+    max-height: none; /* Thay đổi từ height: auto thành max-height: none */
+}
+
+/* Style cho submenu level 3 */
+.submenu .submenu .menu-item {
+    padding-left: 60px; /* Thêm padding cho menu level 3 */
+}
+
+/* Xoay mũi tên khi menu được mở */
+.menu-item[aria-expanded="true"] .arrow,
+.menu-item .arrow.active {
+    transform: rotate(90deg);
+}
+
+/* Animation cho arrow */
+.arrow {
+    transition: transform 0.3s ease;
+}
+
+/* Thêm style mới cho menu item active */
+.menu-item.active {
+    background: #e6f3ff !important; /* Màu nền highlight */
+    color: #2957a4 !important;
+    font-weight: 500;
+}
+
+.menu-item.active i {
+    color: #2957a4;
+}
+
+/* Sửa lại hover effect */
+.menu-item:hover {
+    background: #f8f9fa;
+    color: #2957a4;
+}
+
+/* Menu group */
+.menu-group {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.menu-group:last-child {
+    border-bottom: none;
+}
+
+/* Main content */
+.main-content {
+    margin-left: 260px;
+    margin-top: 60px;
+    padding: 20px;
+    min-height: calc(100vh - 60px);
+}
+
+/* Scrollbar styling */
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: #ddd;
+    border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: #ccc;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+
+    .sidebar.show {
+        transform: translateX(0);
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+}
+
+/*css cho button chatbot, its, sos*/
+.floating-buttons {
+    position: fixed;
+    right: 20px;
+    bottom: 90px; /* Điều chỉnh vị trí cao hơn để không che nút chatbot */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 9999;
+}
+
+.floating-btn {
+    width: 60px; /* Kích thước cố định */
+    height: 60px;
+    border-radius: 50%; /* Bo tròn */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-size: 12px;
+}
+
+.floating-btn i {
+    font-size: 24px;
+    margin-bottom: 4px;
+}
+
+.floating-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.cctv-btn {
+    background-color: #2196F3;
+}
+
+.sos-btn {
+    background-color: #f44336;
+}

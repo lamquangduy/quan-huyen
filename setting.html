@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thiết lập - UBND Quận Liên Chiểu</title>
+    <link rel="icon" type="image/png" href="/assets/images/icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/setting.css">
+</head>
+<body>
+    <!-- Header section -->
+    <div id="header"></div>
+
+    <div class="container">
+        <!-- Sidebar with multilevel menu -->
+        <div id="sidebar"></div>
+
+        <!-- Main content -->
+        <main class="main-content">
+            <div class="settings-page">
+                <!-- Thanh điều hướng tab -->
+                <ul class="nav nav-tabs mb-4">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-bs-toggle="tab" href="#organization">
+                            <i class="fas fa-sitemap"></i> Cơ cấu tổ chức
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#user-management">
+                            <i class="fas fa-users"></i> Quản lý người dùng
+                        </a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#roles">
+                            <i class="fas fa-user-tag"></i> Vai trò
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#permissions">
+                            <i class="fas fa-shield-alt"></i> Phân quyền đơn vị
+                        </a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#system">
+                            <i class="fas fa-cog"></i> Cấu hình hệ thống
+                        </a>
+                    </li> -->
+                </ul>
+
+                <!-- Nội dung các tab -->
+                <div class="tab-content">
+                    <!-- Tab sơ đồ tổ chức -->
+                    <div id="organization" class="tab-pane fade show active">
+                         <div class="card">
+                            <div class="card-body">
+
+                                <table class="table table-bordered table-hover">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Tên đơn vị</th>
+                                            <th>Địa chỉ</th>
+                                            <th>Điện thoại</th>
+                                            <th>Email</th>
+                                            <th>Lãnh đạo</th>
+                                            <th style="width: 130px">Thao tác</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Ban Lãnh đạo Quận -->
+                                        <tr class="table-dark">
+                                            <td colspan="6"><strong>LÃNH ĐẠO UBND QUẬN</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Văn phòng UBND Quận (Chủ tịch)</td>
+                                            <td>168 Nguyễn Sinh Sắc - Quận Liên Chiểu - Tp Đà Nẵng</td>
+                                            <td>0236 3.765.959 / 0914.242.433</td>
+                                            <td>hoaht1@danang.gov.vn</td>
+                                            <td>Hoàng Thanh Hòa - Chủ tịch UBND quận</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Văn phòng UBND Quận (Phó Chủ tịch)</td>
+                                            <td>168 Nguyễn Sinh Sắc - Quận Liên Chiểu - Tp Đà Nẵng</td>
+                                            <td>0236 3.621.997 / 0905.126.472</td>
+                                            <td>nhuongn1@danang.gov.vn</td>
+                                            <td>Nguyễn Nhường - Phó Chủ tịch UBND quận</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Văn phòng UBND Quận (Phó Chủ tịch)</td>
+                                            <td>168 Nguyễn Sinh Sắc - Quận Liên Chiểu - Tp Đà Nẵng</td>
+                                            <td>0905.537.609</td>
+                                            <td>nguyentc1@danang.gov.vn</td>
+                                            <td>Trần Công Nguyên - Phó Chủ tịch UBND quận</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Văn phòng UBND Quận (Phó Chủ tịch)</td>
+                                            <td>168 Nguyễn Sinh Sắc - Quận Liên Chiểu - Tp Đà Nẵng</td>
+                                            <td>0905.234.569</td>
+                                            <td>vuha@danang.gov.vn</td>
+                                            <td>Huỳnh Anh Vũ - Phó Chủ tịch UBND quận</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                                            </td>
+                                        </tr>
+
+                                         <!-- Phòng ban chuyên môn -->
+                                        <tr class="table-primary">
+                                            <td colspan="6"><strong>I. CÁC PHÒNG BAN CHUYÊN MÔN</strong></td>
+                                        </tr>
+                                         <tr>
+                                            <td>Văn phòng UBND quận</td>
+                                            <td>168 Nguyễn Sinh Sắc - Quận Liên Chiểu - Tp Đà Nẵng</td>
+                                            <td>3841012</td>
+                                            <td>bbtlienchieu@danang.gov.vn (Website Email)</td>
+                                             <td>Chánh Văn phòng</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                                                <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                         <tr>
+                                            <td>Phòng Tài chính - Kế hoạch</td>
+                                            <td>168 Nguyễn Sinh Sắc - Quận Liên Chiểu - Tp Đà Nẵng</td>
+                                            <td>3841585</td>
+                                            <td></td>
+                                             <td>Trưởng phòng</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                                                <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Phòng Kinh tế</td>
+                                            <td>168 Nguyễn Sinh Sắc - Quận Liên Chiểu - Tp Đà Nẵng</td>
+                                            <td>3765799</td>
+                                            <td></td>
+                                            <td>Trưởng phòng</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                                                <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                         <tr>
+                                            <td>Phòng Quản lý đô thị</td>
+                                            <td>168 Nguyễn Sinh Sắc - Quận Liên Chiểu - Tp Đà Nẵng</td>
+                                             <td>3845196</td>
+                                            <td></td>
+                                             <td>Trưởng phòng</td>
+                                            <td>
+                                                 <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                                                <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Phòng Nội vụ</td>
+                                            <td>168 Nguyễn Sinh Sắc - Quận Liên Chiểu - Tp Đà Nẵng</td>
+                                            <td>3841586</td>
+                                             <td></td>
+                                             <td>Trưởng phòng</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                                                <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Phòng Lao động - TB và XH</td>
+                                            <td>168 Nguyễn Sinh Sắc - Quận Liên Chiểu - Tp Đà Nẵng</td>
+                                            <td>3845194</td>
+                                            <td></td>
+                                            <td>Trưởng phòng</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                                                <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Phòng Văn hóa - Thông tin</td>
+                                            <td>168 Nguyễn Sinh Sắc - Quận Liên Chiểu - Tp Đà Nẵng</td>
+                                            <td>3730831</td>
+                                            <td></td>
+                                            <td>Trưởng phòng</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                                                <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Phòng Tư pháp</td>
+                                            <td>168 Nguyễn Sinh Sắc - Quận Liên Chiểu - Tp Đà Nẵng</td>
+                                            <td>3841587</td>
+                                            <td></td>
+                                            <td>Trưởng phòng</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                                                <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Thanh tra quận</td>
+                                            <td>168 Nguyễn Sinh Sắc - Quận Liên Chiểu - Tp Đà Nẵng</td>
+                                            <td>3841588</td>
+                                            <td></td>
+                                            <td>Chánh Thanh tra</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                                                <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Phòng Tài nguyên và Môi trường</td>
+                                            <td>168 Nguyễn Sinh Sắc - Quận Liên Chiểu - Tp Đà Nẵng</td>
+                                            <td>3736717</td>
+                                            <td></td>
+                                            <td>Trưởng phòng</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                                                <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Phòng Giáo dục và Đào tạo</td>
+                                            <td>168 Nguyễn Sinh Sắc - Quận Liên Chiểu - Tp Đà Nẵng</td>
+                                            <td>3767279</td>
+                                            <td></td>
+                                            <td>Trưởng phòng</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                                                <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Phòng Y tế</td>
+                                            <td>168 Nguyễn Sinh Sắc - Quận Liên Chiểu - Tp Đà Nẵng</td>
+                                            <td>3841672</td>
+                                            <td></td>
+                                            <td>Trưởng phòng</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                                                <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                         <!-- Các đơn vị thuộc quận -->
+                                        <tr class="table-success">
+                                            <td colspan="6"><strong>II. CÁC PHƯỜNG TRỰC THUỘC</strong></td>
+                                        </tr>
+                                         <tr>
+                                            <td>UBND Phường Hoà Minh</td>
+                                            <td>168 Nguyễn Sinh Sắc - Quận Liên Chiểu - Tp Đà Nẵng (Trụ sở Quận)</td>
+                                            <td>3842265</td>
+                                             <td>hmlc@danang.gov.vn</td>
+                                             <td>Chủ tịch UBND Phường</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                                                <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                         <tr>
+                                            <td>UBND Phường Hòa Khánh Nam</td>
+                                             <td>168 Nguyễn Sinh Sắc - Quận Liên Chiểu - Tp Đà Nẵng (Trụ sở Quận)</td>
+                                            <td>3842125</td>
+                                             <td>hknlc@danang.gov.vn</td>
+                                             <td>Chủ tịch UBND Phường</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                                                 <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                         <tr>
+                                             <td>UBND Phường Hoà Khánh Bắc</td>
+                                             <td>168 Nguyễn Sinh Sắc - Quận Liên Chiểu - Tp Đà Nẵng (Trụ sở Quận)</td>
+                                            <td>3738059</td>
+                                            <td>hkblc@danang.gov.vn</td>
+                                             <td>Chủ tịch UBND Phường</td>
+                                            <td>
+                                                 <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                                                <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>UBND Phường Hoà Hiệp Nam</td>
+                                            <td>168 Nguyễn Sinh Sắc - Quận Liên Chiểu - Tp Đà Nẵng (Trụ sở Quận)</td>
+                                            <td>3842119</td>
+                                             <td>hhnlc@danang.gov.vn</td>
+                                            <td>Chủ tịch UBND Phường</td>
+                                            <td>
+                                                 <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                                                <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>UBND Phường Hoà Hiệp Bắc</td>
+                                            <td>168 Nguyễn Sinh Sắc - Quận Liên Chiểu - Tp Đà Nẵng (Trụ sở Quận)</td>
+                                            <td>3774055</td>
+                                             <td>hhblc@danang.gov.vn</td>
+                                            <td>Chủ tịch UBND Phường</td>
+                                            <td>
+                                                 <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                                                <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                         <!-- Các đơn vị sự nghiệp -->
+                                        <tr class="table-warning">
+                                            <td colspan="6"><strong>III. ĐƠN VỊ SỰ NGHIỆP</strong></td>
+                                        </tr>
+                                         <tr>
+                                            <td>Đài truyền thanh</td>
+                                            <td>91 Ngô Thì Nhậm</td>
+                                            <td>3.845.128</td>
+                                             <td>dttlc@danang.gov.vn</td>
+                                             <td>Giám đốc Đài</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                                                <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                         <tr>
+                                            <td>Đội Quy tắc Đô thị</td>
+                                             <td>91 Ngô Thì Nhậm</td>
+                                            <td>0236. 3730.044</td>
+                                             <td>qtdtlc@danang.gov.vn</td>
+                                             <td>Đội trưởng</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                                                 <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                         <tr>
+                                             <td>Trung tâm DS-KHHGĐ</td>
+                                             <td>Đường Lạc Long Quân</td>
+                                            <td>0236. 3735546</td>
+                                            <td>dsgdlc@danang.gov.vn</td>
+                                             <td>Giám đốc Trung tâm</td>
+                                            <td>
+                                                 <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                                                <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ban Quản lý các DA ĐT&XD</td>
+                                            <td>91 Ngô Thì Nhậm, Quận Liên Chiểu</td>
+                                            <td>0236. 3768024</td>
+                                             <td>bqldalc@danang.gov.vn</td>
+                                            <td>Giám đốc Ban QLDA</td>
+                                            <td>
+                                                 <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                                                <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ban Quản lý các chợ</td>
+                                            <td>Đường Nguyễn Cảnh Chân</td>
+                                            <td>0236. 3734.482</td>
+                                             <td>bqldalc@danang.gov.vn</td>
+                                            <td>Giám đốc Ban QL Chợ</td>
+                                            <td>
+                                                 <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                                                <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Trung tâm Văn hóa thể thao</td>
+                                            <td>91 Ngô Thì Nhậm, Quận Liên Chiểu</td>
+                                            <td></td>
+                                             <td>ttvhttlc@danang.gov.vn</td>
+                                            <td>Giám đốc Trung tâm</td>
+                                            <td>
+                                                 <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                                                <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <!-- Nút thêm mới -->
+                                <div class="mt-3">
+                                    <button class="btn btn-primary">
+                                        <i class="fas fa-plus"></i> Thêm đơn vị mới
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab Người dùng -->
+                    <div id="user-management" class="tab-pane fade">
+                         <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title mb-4">Quản lý người dùng</h5>
+
+                                <!-- Bộ lọc -->
+                                <div class="row mb-4">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="form-label">Đơn vị</label>
+                                            <select class="form-select">
+                                                <option value="">Tất cả đơn vị</option>
+                                                 <optgroup label="Phòng ban chuyên môn">
+                                                    <option>Văn phòng UBND quận</option>
+                                                    <option>Phòng Tài chính - Kế hoạch</option>
+                                                    <option>Phòng Kinh tế</option>
+                                                     <option>Phòng Quản lý đô thị</option>
+                                                     <option>Phòng Nội vụ</option>
+                                                      <option>Phòng Lao động - TB và XH</option>
+                                                      <option>Phòng Văn hóa - Thông tin</option>
+                                                      <option>Phòng Tư pháp</option>
+                                                      <option>Thanh tra quận</option>
+                                                      <option>Phòng Tài nguyên và Môi trường</option>
+                                                      <option>Phòng Giáo dục và Đào tạo</option>
+                                                      <option>Phòng Y tế</option>
+                                                </optgroup>
+                                                 <optgroup label="Phường trực thuộc">
+                                                      <option>UBND Phường Hoà Minh</option>
+                                                      <option>UBND Phường Hòa Khánh Nam</option>
+                                                        <option>UBND Phường Hoà Khánh Bắc</option>
+                                                        <option>UBND Phường Hoà Hiệp Nam</option>
+                                                        <option>UBND Phường Hoà Hiệp Bắc</option>
+                                                </optgroup>
+                                                <optgroup label="Đơn vị sự nghiệp">
+                                                      <option>Đài truyền thanh</option>
+                                                      <option>Đội Quy tắc Đô thị</option>
+                                                        <option>Trung tâm DS-KHHGĐ</option>
+                                                        <option>Ban Quản lý các DA ĐT&XD</option>
+                                                        <option>Ban Quản lý các chợ</option>
+                                                        <option>Trung tâm Văn hóa thể thao</option>
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="form-label">Vai trò</label>
+                                            <select class="form-select">
+                                                <option value="">Tất cả vai trò</option>
+                                                <option>Quản trị hệ thống</option>
+                                                <option>Lãnh đạo Quận</option>
+                                                <option>Lãnh đạo đơn vị</option>
+                                                <option>Chuyên viên</option>
+                                                 <option>Nhân viên</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="form-label">Tìm kiếm</label>
+                                            <input type="text" class="form-control" placeholder="Tên, email, số điện thoại...">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="form-label">Trạng thái</label>
+                                            <select class="form-select">
+                                                <option value="">Tất cả trạng thái</option>
+                                                <option>Đang hoạt động</option>
+                                                <option>Đã khóa</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Bảng danh sách người dùng -->
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th style="width: 50px">STT</th>
+                                                <th style="width: 100px">Mã NV</th>
+                                                <th>Họ và tên</th>
+                                                <th>Email</th>
+                                                <th>Số điện thoại</th>
+                                                <th>Đơn vị</th>
+                                                <th>Vai trò</th>
+                                                <th>Trạng thái</th>
+                                                <th style="width: 130px">Thao tác</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>NV001</td>
+                                                <td>Nguyễn Văn An</td>
+                                                <td>nguyenvanan@lienchieu.danang.gov.vn</td>
+                                                <td> 0912345678</td>
+                                                <td>Văn phòng UBND quận</td>
+                                                <td>
+                                                    <span class="badge bg-danger">Quản trị hệ thống</span>
+                                                </td>
+                                                <td>
+                                                    <span class="badge bg-success">Đang hoạt động</span>
+                                                </td>
+                                                 <td>
+                                                    <button class="btn btn-sm btn-primary" title="Sửa">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-info" title="Đổi mật khẩu">
+                                                        <i class="fas fa-key"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-warning" title="Khóa">
+                                                        <i class="fas fa-lock"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>NV002</td>
+                                                <td>Trần Thị Bình</td>
+                                                <td>tranthibinh@lienchieu.danang.gov.vn</td>
+                                                <td> 0987654321</td>
+                                               <td>Trung tâm Văn hóa thể thao</td>
+                                                <td>
+                                                    <span class="badge bg-primary">Chuyên viên</span>
+                                                </td>
+                                                <td>
+                                                    <span class="badge bg-success">Đang hoạt động</span>
+                                                </td>
+                                                 <td>
+                                                    <button class="btn btn-sm btn-primary" title="Sửa">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-info" title="Đổi mật khẩu">
+                                                        <i class="fas fa-key"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-warning" title="Khóa">
+                                                        <i class="fas fa-lock"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                             <tr>
+                                                <td>3</td>
+                                                <td>NV003</td>
+                                                <td>Nguyễn Thị Chung</td>
+                                                <td>nguyenthichung@lienchieu.danang.gov.vn</td>
+                                                <td> 0912345679</td>
+                                                 <td>UBND Phường Hoà Khánh Bắc</td>
+                                                <td>
+                                                    <span class="badge bg-primary">Nhân viên</span>
+                                                </td>
+                                                <td>
+                                                    <span class="badge bg-danger">Đã khóa</span>
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-primary" title="Sửa">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-info" title="Đổi mật khẩu">
+                                                        <i class="fas fa-key"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-warning" title="Khóa">
+                                                        <i class="fas fa-lock"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>4</td>
+                                                <td>NV004</td>
+                                                <td>Phạm Văn Dũng</td>
+                                                <td>phamvandung@lienchieu.danang.gov.vn</td>
+                                                <td> 0987654322</td>
+                                                 <td>Phòng Kinh tế</td>
+                                                <td>
+                                                    <span class="badge bg-primary">Lãnh đạo đơn vị</span>
+                                                </td>
+                                                <td>
+                                                    <span class="badge bg-success">Đang hoạt động</span>
+                                                </td>
+                                                  <td>
+                                                    <button class="btn btn-sm btn-primary" title="Sửa">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-info" title="Đổi mật khẩu">
+                                                        <i class="fas fa-key"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-warning" title="Khóa">
+                                                        <i class="fas fa-lock"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <!-- Phân trang -->
+                                <nav aria-label="Page navigation" class="mt-3">
+                                    <ul class="pagination justify-content-end">
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="#" tabindex="-1">Trước</a>
+                                        </li>
+                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#">Sau</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+
+                                <!-- Nút thêm mới -->
+                                <div class="mt-3">
+                                    <button class="btn btn-primary">
+                                        <i class="fas fa-plus"></i> Thêm người dùng
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab Vai trò -->
+                     <div id="roles" class="tab-pane fade">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title d-flex justify-content-between align-items-center">
+                                    Quản lý vai trò
+                                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addRoleModal">
+                                        <i class="fas fa-plus"></i> Thêm vai trò
+                                    </button>
+                                </h5>
+
+                                <!-- Bảng danh sách vai trò -->
+                                <div class="table-responsive mt-3">
+                                    <table class="table table-bordered">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>Tên vai trò</th>
+                                                <th>Mô tả</th>
+                                                <th>Số người dùng</th>
+                                                <th>Quyền hệ thống</th>
+                                                <th>Thao tác</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Quản trị hệ thống</td>
+                                                <td>Quản lý toàn bộ hệ thống</td>
+                                                <td>1</td>
+                                                <td>
+                                                    <span class="badge bg-success">Thêm/Sửa/Xóa dữ liệu</span>
+                                                    <span class="badge bg-info">Duyệt dữ liệu</span>
+                                                    <span class="badge bg-warning">Xuất dữ liệu</span>
+                                                    <span class="badge bg-danger">Quản lý người dùng</span>
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editRoleModal">
+                                                        <i class="fas fa-edit"></i> Sửa
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Lãnh đạo Quận</td>
+                                                <td>Lãnh đạo cấp cao của Quận</td>
+                                                <td>4</td>
+                                                <td>
+                                                    <span class="badge bg-success">Thêm/Sửa dữ liệu</span>
+                                                    <span class="badge bg-info">Duyệt dữ liệu</span>
+                                                    <span class="badge bg-warning">Xuất dữ liệu</span>
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editRoleModal">
+                                                        <i class="fas fa-edit"></i> Sửa
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Quản lý đơn vị</td>
+                                                <td>Lãnh đạo cấp đơn vị (Phòng, Ban, Phường...)</td>
+                                                <td>17</td>
+                                                <td>
+                                                    <span class="badge bg-success">Thêm/Sửa dữ liệu</span>
+                                                    <span class="badge bg-info">Duyệt dữ liệu</span>
+                                                    <span class="badge bg-warning">Xuất dữ liệu</span>
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editRoleModal">
+                                                        <i class="fas fa-edit"></i> Sửa
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Chuyên viên</td>
+                                                <td>Chuyên viên nghiệp vụ</td>
+                                                <td>50</td>
+                                                <td>
+                                                    <span class="badge bg-success">Thêm/Sửa dữ liệu</span>
+                                                    <span class="badge bg-warning">Xuất dữ liệu</span>
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editRoleModal">
+                                                        <i class="fas fa-edit"></i> Sửa
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Cán bộ cơ sở</td>
+                                                <td>Cán bộ tại Phường</td>
+                                                <td>25</td>
+                                                <td>
+                                                    <span class="badge bg-success">Thêm dữ liệu</span>
+                                                    <span class="badge bg-warning">Xuất dữ liệu</span>
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editRoleModal">
+                                                        <i class="fas fa-edit"></i> Sửa
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Cán bộ nhập liệu</td>
+                                                <td>Nhập liệu và cập nhật dữ liệu</td>
+                                                <td>30</td>
+                                                <td>
+                                                    <span class="badge bg-success">Thêm dữ liệu</span>
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editRoleModal">
+                                                        <i class="fas fa-edit"></i> Sửa
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                     <!-- Modal chỉnh sửa vai trò -->
+                    <div class="modal fade" id="editRoleModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Chỉnh sửa vai trò</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="mb-3">
+                                        <label class="form-label">Tên vai trò</label>
+                                        <input type="text" class="form-control" value="Lãnh đạo đơn vị">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Mô tả</label>
+                                        <input type="text" class="form-control" value="Quản lý cấp đơn vị">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Quyền hệ thống</label>
+                                        <div class="form-check mb-2">
+                                            <input type="checkbox" class="form-check-input" checked>
+                                            <label>Thêm dữ liệu</label>
+                                        </div>
+                                        <div class="form-check mb-2">
+                                            <input type="checkbox" class="form-check-input" checked>
+                                            <label>Sửa dữ liệu</label>
+                                        </div>
+                                        <div class="form-check mb-2">
+                                            <input type="checkbox" class="form-check-input">
+                                            <label>Xóa dữ liệu</label>
+                                        </div>
+                                        <div class="form-check mb-2">
+                                            <input type="checkbox" class="form-check-input" checked>
+                                            <label>Duyệt dữ liệu</label>
+                                        </div>
+                                        <div class="form-check mb-2">
+                                            <input type="checkbox" class="form-check-input" checked>
+                                            <label>Xuất dữ liệu</label>
+                                        </div>
+                                        <div class="form-check mb-2">
+                                            <input type="checkbox" class="form-check-input">
+                                            <label>Quản lý người dùng</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                                    <button type="button" class="btn btn-primary">Lưu thay đổi</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                     <!-- Tab Phân quyền -->
+                     <div id="permissions" class="tab-pane fade">
+                        <div class="card">
+                           <div class="card-body">
+                               <h5 class="card-title d-flex justify-content-between align-items-center">
+                                   Phân quyền đơn vị
+                                   <button class="btn btn-primary">
+                                       <i class="fas fa-save"></i> Lưu thay đổi
+                                   </button>
+                               </h5>
+
+                               <!-- Chọn đơn vị -->
+                               <div class="row mb-4">
+                                   <div class="col-md-4">
+                                       <select class="form-select" id="department-select">
+                                           <optgroup label="Phòng ban chuyên môn">
+                                                   <option>Văn phòng UBND quận</option>
+                                                   <option>Phòng Tài chính - Kế hoạch</option>
+                                                   <option>Phòng Kinh tế</option>
+                                                    <option>Phòng Quản lý đô thị</option>
+                                                    <option>Phòng Nội vụ</option>
+                                                     <option>Phòng Lao động - TB và XH</option>
+                                                     <option>Phòng Văn hóa - Thông tin</option>
+                                                     <option>Phòng Tư pháp</option>
+                                                     <option>Thanh tra quận</option>
+                                                     <option>Phòng Tài nguyên và Môi trường</option>
+                                                     <option>Phòng Giáo dục và Đào tạo</option>
+                                                     <option>Phòng Y tế</option>
+                                               </optgroup>
+                                                <optgroup label="Phường trực thuộc">
+                                                     <option>UBND Phường Hoà Minh</option>
+                                                     <option>UBND Phường Hòa Khánh Nam</option>
+                                                       <option>UBND Phường Hoà Khánh Bắc</option>
+                                                       <option>UBND Phường Hoà Hiệp Nam</option>
+                                                       <option>UBND Phường Hoà Hiệp Bắc</option>
+                                               </optgroup>
+                                               <optgroup label="Đơn vị sự nghiệp">
+                                                     <option>Đài truyền thanh</option>
+                                                     <option>Đội Quy tắc Đô thị</option>
+                                                       <option>Trung tâm DS-KHHGĐ</option>
+                                                       <option>Ban Quản lý các DA ĐT&XD</option>
+                                                       <option>Ban Quản lý các chợ</option>
+                                                       <option>Trung tâm Văn hóa thể thao</option>
+                                               </optgroup>
+                                       </select>
+                                   </div>
+                               </div>
+
+                               <!-- Bảng phân quyền -->
+                               <div class="table-responsive">
+                                   <table class="table table-bordered">
+                                       <thead class="table-light">
+                                           <tr>
+                                               <th style="width: 300px">Loại dữ liệu</th>
+                                               <th>Quyền xem</th>
+                                               <th>Ghi chú</th>
+                                           </tr>
+                                       </thead>
+                                       <tbody>
+                                           <!-- Quản lý dự án -->
+                                           <tr class="table-primary">
+                                               <td colspan="3"><strong>Quản lý dự án</strong></td>
+                                           </tr>
+                                           <tr>
+                                               <td>Dự án đầu tư</td>
+                                               <td>
+                                                   <select class="form-select form-select-sm">
+                                                       <option>Không có quyền xem</option>
+                                                       <option>Chỉ xem dữ liệu đơn vị</option>
+                                                       <option>Xem tất cả dữ liệu</option>
+                                                   </select>
+                                               </td>
+                                               <td><input type="text" class="form-control form-control-sm" placeholder="Ghi chú"></td>
+                                           </tr>
+                                           <tr>
+                                               <td>Nguồn vốn</td>
+                                               <td>
+                                                   <select class="form-select form-select-sm">
+                                                       <option>Không có quyền xem</option>
+                                                       <option>Chỉ xem dữ liệu đơn vị</option>
+                                                       <option>Xem tất cả dữ liệu</option>
+                                                   </select>
+                                               </td>
+                                                <td><input type="text" class="form-control form-control-sm" placeholder="Ghi chú"></td>
+                                           </tr>
+                                            <tr>
+                                               <td>Hồ sơ pháp lý</td>
+                                                <td>
+                                                   <select class="form-select form-select-sm">
+                                                       <option>Không có quyền xem</option>
+                                                       <option>Chỉ xem dữ liệu đơn vị</option>
+                                                       <option>Xem tất cả dữ liệu</option>
+                                                   </select>
+                                               </td>
+                                               <td><input type="text" class="form-control form-control-sm" placeholder="Ghi chú"></td>
+                                           </tr>
+
+                                            <!-- Quản lý chợ -->
+                                           <tr class="table-primary">
+                                               <td colspan="3"><strong>Quản lý chợ</strong></td>
+                                           </tr>
+                                           <tr>
+                                               <td>Thông tin chợ</td>
+                                               <td>
+                                                   <select class="form-select form-select-sm">
+                                                       <option>Không có quyền xem</option>
+                                                       <option>Chỉ xem dữ liệu đơn vị</option>
+                                                       <option>Xem tất cả dữ liệu</option>
+                                                   </select>
+                                               </td>
+                                               <td><input type="text" class="form-control form-control-sm" placeholder="Ghi chú"></td>
+                                           </tr>
+                                           <tr>
+                                               <td>Quản lý lô/sạp</td>
+                                               <td>
+                                                   <select class="form-select form-select-sm">
+                                                        <option>Không có quyền xem</option>
+                                                       <option>Chỉ xem dữ liệu đơn vị</option>
+                                                       <option>Xem tất cả dữ liệu</option>
+                                                   </select>
+                                               </td>
+                                                <td><input type="text" class="form-control form-control-sm" placeholder="Ghi chú"></td>
+                                           </tr>
+                                            <tr>
+                                               <td>Hộ kinh doanh</td>
+                                                <td>
+                                                   <select class="form-select form-select-sm">
+                                                       <option>Không có quyền xem</option>
+                                                       <option>Chỉ xem dữ liệu đơn vị</option>
+                                                       <option>Xem tất cả dữ liệu</option>
+                                                   </select>
+                                               </td>
+                                               <td><input type="text" class="form-control form-control-sm" placeholder="Ghi chú"></td>
+                                           </tr>
+                                           <tr>
+                                               <td>Thu phí chợ</td>
+                                                <td>
+                                                   <select class="form-select form-select-sm">
+                                                       <option>Không có quyền xem</option>
+                                                       <option>Chỉ xem dữ liệu đơn vị</option>
+                                                       <option>Xem tất cả dữ liệu</option>
+                                                   </select>
+                                               </td>
+                                               <td><input type="text" class="form-control form-control-sm" placeholder="Ghi chú"></td>
+                                           </tr>
+
+                                           <!-- Quản lý đô thị -->
+                                           <tr class="table-primary">
+                                               <td colspan="3"><strong>Quản lý đô thị</strong></td>
+                                           </tr>
+                                           <tr>
+                                                <td>Xây dựng</td>
+                                               <td>
+                                                   <select class="form-select form-select-sm">
+                                                       <option>Không có quyền xem</option>
+                                                       <option>Chỉ xem dữ liệu đơn vị</option>
+                                                       <option>Xem tất cả dữ liệu</option>
+                                                   </select>
+                                               </td>
+                                               <td><input type="text" class="form-control form-control-sm" placeholder="Ghi chú"></td>
+                                           </tr>
+                                            <tr>
+                                               <td>Hạ tầng</td>
+                                                <td>
+                                                   <select class="form-select form-select-sm">
+                                                       <option>Không có quyền xem</option>
+                                                       <option>Chỉ xem dữ liệu đơn vị</option>
+                                                       <option>Xem tất cả dữ liệu</option>
+                                                   </select>
+                                               </td>
+                                               <td><input type="text" class="form-control form-control-sm" placeholder="Ghi chú"></td>
+                                           </tr>
+
+                                            <!-- Kinh tế & Thủy sản -->
+                                            <tr class="table-primary">
+                                               <td colspan="3"><strong>Kinh tế & Thủy sản</strong></td>
+                                           </tr>
+                                           <tr>
+                                               <td>Doanh nghiệp</td>
+                                               <td>
+                                                   <select class="form-select form-select-sm">
+                                                       <option>Không có quyền xem</option>
+                                                       <option>Chỉ xem dữ liệu đơn vị</option>
+                                                        <option>Xem tất cả dữ liệu</option>
+                                                   </select>
+                                               </td>
+                                               <td><input type="text" class="form-control form-control-sm" placeholder="Ghi chú"></td>
+                                           </tr>
+                                            <tr>
+                                               <td>Thủy sản</td>
+                                               <td>
+                                                    <select class="form-select form-select-sm">
+                                                       <option>Không có quyền xem</option>
+                                                       <option>Chỉ xem dữ liệu đơn vị</option>
+                                                        <option>Xem tất cả dữ liệu</option>
+                                                   </select>
+                                               </td>
+                                               <td><input type="text" class="form-control form-control-sm" placeholder="Ghi chú"></td>
+                                           </tr>
+                                            <tr>
+                                               <td>An toàn thực phẩm</td>
+                                               <td>
+                                                    <select class="form-select form-select-sm">
+                                                       <option>Không có quyền xem</option>
+                                                       <option>Chỉ xem dữ liệu đơn vị</option>
+                                                        <option>Xem tất cả dữ liệu</option>
+                                                   </select>
+                                               </td>
+                                               <td><input type="text" class="form-control form-control-sm" placeholder="Ghi chú"></td>
+                                           </tr>
+
+                                           <!-- Lao động & Xã hội -->
+                                            <tr class="table-primary">
+                                               <td colspan="3"><strong>Lao động & Xã hội</strong></td>
+                                           </tr>
+                                           <tr>
+                                               <td>Người có công</td>
+                                                <td>
+                                                    <select class="form-select form-select-sm">
+                                                       <option>Không có quyền xem</option>
+                                                       <option>Chỉ xem dữ liệu đơn vị</option>
+                                                        <option>Xem tất cả dữ liệu</option>
+                                                   </select>
+                                               </td>
+                                               <td><input type="text" class="form-control form-control-sm" placeholder="Ghi chú"></td>
+                                           </tr>
+                                            <tr>
+                                               <td>Bảo trợ xã hội</td>
+                                                <td>
+                                                    <select class="form-select form-select-sm">
+                                                       <option>Không có quyền xem</option>
+                                                       <option>Chỉ xem dữ liệu đơn vị</option>
+                                                        <option>Xem tất cả dữ liệu</option>
+                                                   </select>
+                                               </td>
+                                               <td><input type="text" class="form-control form-control-sm" placeholder="Ghi chú"></td>
+                                           </tr>
+                                             <tr>
+                                               <td>Giảm nghèo</td>
+                                                <td>
+                                                    <select class="form-select form-select-sm">
+                                                       <option>Không có quyền xem</option>
+                                                       <option>Chỉ xem dữ liệu đơn vị</option>
+                                                        <option>Xem tất cả dữ liệu</option>
+                                                   </select>
+                                               </td>
+                                               <td><input type="text" class="form-control form-control-sm" placeholder="Ghi chú"></td>
+                                           </tr>
+                                           <tr>
+                                               <td>Trẻ em đặc biệt</td>
+                                                <td>
+                                                    <select class="form-select form-select-sm">
+                                                       <option>Không có quyền xem</option>
+                                                       <option>Chỉ xem dữ liệu đơn vị</option>
+                                                        <option>Xem tất cả dữ liệu</option>
+                                                   </select>
+                                               </td>
+                                               <td><input type="text" class="form-control form-control-sm" placeholder="Ghi chú"></td>
+                                           </tr>
+
+                                           <!-- Giáo dục -->
+                                            <tr class="table-primary">
+                                               <td colspan="3"><strong>Giáo dục</strong></td>
+                                           </tr>
+                                           <tr>
+                                               <td>Trường học</td>
+                                               <td>
+                                                   <select class="form-select form-select-sm">
+                                                       <option>Không có quyền xem</option>
+                                                       <option>Chỉ xem dữ liệu đơn vị</option>
+                                                        <option>Xem tất cả dữ liệu</option>
+                                                   </select>
+                                               </td>
+                                               <td><input type="text" class="form-control form-control-sm" placeholder="Ghi chú"></td>
+                                           </tr>
+                                            <tr>
+                                               <td>Văn bằng</td>
+                                               <td>
+                                                    <select class="form-select form-select-sm">
+                                                       <option>Không có quyền xem</option>
+                                                       <option>Chỉ xem dữ liệu đơn vị</option>
+                                                        <option>Xem tất cả dữ liệu</option>
+                                                   </select>
+                                               </td>
+                                               <td><input type="text" class="form-control form-control-sm" placeholder="Ghi chú"></td>
+                                           </tr>
+                                            <tr>
+                                               <td>Thi đua khen thưởng</td>
+                                               <td>
+                                                    <select class="form-select form-select-sm">
+                                                       <option>Không có quyền xem</option>
+                                                       <option>Chỉ xem dữ liệu đơn vị</option>
+                                                        <option>Xem tất cả dữ liệu</option>
+                                                   </select>
+                                               </td>
+                                               <td><input type="text" class="form-control form-control-sm" placeholder="Ghi chú"></td>
+                                           </tr>
+
+                                           <!-- Văn hóa & Thể thao -->
+                                            <tr class="table-primary">
+                                               <td colspan="3"><strong>Văn hóa & Thể thao</strong></td>
+                                           </tr>
+                                           <tr>
+                                               <td>Di tích văn hóa</td>
+                                               <td>
+                                                   <select class="form-select form-select-sm">
+                                                       <option>Không có quyền xem</option>
+                                                       <option>Chỉ xem dữ liệu đơn vị</option>
+                                                        <option>Xem tất cả dữ liệu</option>
+                                                   </select>
+                                               </td>
+                                               <td><input type="text" class="form-control form-control-sm" placeholder="Ghi chú"></td>
+                                           </tr>
+                                            <tr>
+                                               <td>Thiết chế văn hóa</td>
+                                               <td>
+                                                    <select class="form-select form-select-sm">
+                                                       <option>Không có quyền xem</option>
+                                                       <option>Chỉ xem dữ liệu đơn vị</option>
+                                                        <option>Xem tất cả dữ liệu</option>
+                                                   </select>
+                                               </td>
+                                               <td><input type="text" class="form-control form-control-sm" placeholder="Ghi chú"></td>
+                                           </tr>
+                                            <tr>
+                                               <td>CLB thể thao</td>
+                                               <td>
+                                                    <select class="form-select form-select-sm">
+                                                       <option>Không có quyền xem</option>
+                                                       <option>Chỉ xem dữ liệu đơn vị</option>
+                                                        <option>Xem tất cả dữ liệu</option>
+                                                   </select>
+                                               </td>
+                                               <td><input type="text" class="form-control form-control-sm" placeholder="Ghi chú"></td>
+                                           </tr>
+                                           <tr>
+                                               <td>Sự kiện VHTT</td>
+                                               <td>
+                                                    <select class="form-select form-select-sm">
+                                                       <option>Không có quyền xem</option>
+                                                       <option>Chỉ xem dữ liệu đơn vị</option>
+                                                        <option>Xem tất cả dữ liệu</option>
+                                                   </select>
+                                               </td>
+                                               <td><input type="text" class="form-control form-control-sm" placeholder="Ghi chú"></td>
+                                           </tr>
+
+                                           <!-- Y tế -->
+                                            <tr class="table-primary">
+                                               <td colspan="3"><strong>Y tế</strong></td>
+                                           </tr>
+                                           <tr>
+                                               <td>Cơ sở y dược</td>
+                                               <td>
+                                                   <select class="form-select form-select-sm">
+                                                       <option>Không có quyền xem</option>
+                                                       <option>Chỉ xem dữ liệu đơn vị</option>
+                                                        <option>Xem tất cả dữ liệu</option>
+                                                   </select>
+                                               </td>
+                                               <td><input type="text" class="form-control form-control-sm" placeholder="Ghi chú"></td>
+                                           </tr>
+                                            <tr>
+                                               <td>An toàn thực phẩm</td>
+                                               <td>
+                                                    <select class="form-select form-select-sm">
+                                                       <option>Không có quyền xem</option>
+                                                       <option>Chỉ xem dữ liệu đơn vị</option>
+                                                        <option>Xem tất cả dữ liệu</option>
+                                                   </select>
+                                               </td>
+                                               <td><input type="text" class="form-control form-control-sm" placeholder="Ghi chú"></td>
+                                           </tr>
+
+                                           <!-- Tài nguyên môi trường -->
+                                            <tr class="table-primary">
+                                               <td colspan="3"><strong>Tài nguyên môi trường</strong></td>
+                                           </tr>
+                                           <tr>
+                                               <td>Quản lý môi trường</td>
+                                               <td>
+                                                   <select class="form-select form-select-sm">
+                                                       <option>Không có quyền xem</option>
+                                                       <option>Chỉ xem dữ liệu đơn vị</option>
+                                                        <option>Xem tất cả dữ liệu</option>
+                                                   </select>
+                                               </td>
+                                               <td><input type="text" class="form-control form-control-sm" placeholder="Ghi chú"></td>
+                                           </tr>
+                                            <tr>
+                                               <td>Hồ đầm</td>
+                                               <td>
+                                                    <select class="form-select form-select-sm">
+                                                       <option>Không có quyền xem</option>
+                                                       <option>Chỉ xem dữ liệu đơn vị</option>
+                                                        <option>Xem tất cả dữ liệu</option>
+                                                   </select>
+                                               </td>
+                                               <td><input type="text" class="form-control form-control-sm" placeholder="Ghi chú"></td>
+                                           </tr>
+                                            <tr>
+                                               <td>Chất lượng nước</td>
+                                               <td>
+                                                    <select class="form-select form-select-sm">
+                                                       <option>Không có quyền xem</option>
+                                                       <option>Chỉ xem dữ liệu đơn vị</option>
+                                                        <option>Xem tất cả dữ liệu</option>
+                                                   </select>
+                                               </td>
+                                               <td><input type="text" class="form-control form-control-sm" placeholder="Ghi chú"></td>
+                                           </tr>
+
+                                           <!-- Nội vụ -->
+                                            <tr class="table-primary">
+                                               <td colspan="3"><strong>Nội vụ</strong></td>
+                                           </tr>
+                                           <tr>
+                                               <td>Cơ sở tôn giáo</td>
+                                               <td>
+                                                   <select class="form-select form-select-sm">
+                                                       <option>Không có quyền xem</option>
+                                                       <option>Chỉ xem dữ liệu đơn vị</option>
+                                                        <option>Xem tất cả dữ liệu</option>
+                                                   </select>
+                                               </td>
+                                               <td><input type="text" class="form-control form-control-sm" placeholder="Ghi chú"></td>
+                                           </tr>
+                                            <tr>
+                                               <td>Tổ dân phố</td>
+                                               <td>
+                                                    <select class="form-select form-select-sm">
+                                                       <option>Không có quyền xem</option>
+                                                       <option>Chỉ xem dữ liệu đơn vị</option>
+                                                        <option>Xem tất cả dữ liệu</option>
+                                                   </select>
+                                               </td>
+                                               <td><input type="text" class="form-control form-control-sm" placeholder="Ghi chú"></td>
+                                           </tr>
+                                            <tr>
+                                               <td>Cán bộ công chức</td>
+                                               <td>
+                                                    <select class="form-select form-select-sm">
+                                                       <option>Không có quyền xem</option>
+                                                       <option>Chỉ xem dữ liệu đơn vị</option>
+                                                        <option>Xem tất cả dữ liệu</option>
+                                                   </select>
+                                               </td>
+                                               <td><input type="text" class="form-control form-control-sm" placeholder="Ghi chú"></td>
+                                           </tr>
+
+                                           <!-- Tư pháp -->
+                                            <tr class="table-primary">
+                                               <td colspan="3"><strong>Tư pháp</strong></td>
+                                           </tr>
+                                           <tr>
+                                               <td>Phổ biến pháp luật</td>
+                                               <td>
+                                                   <select class="form-select form-select-sm">
+                                                       <option>Không có quyền xem</option>
+                                                       <option>Chỉ xem dữ liệu đơn vị</option>
+                                                        <option>Xem tất cả dữ liệu</option>
+                                                   </select>
+                                               </td>
+                                               <td><input type="text" class="form-control form-control-sm" placeholder="Ghi chú"></td>
+                                           </tr>
+                                       </tbody>
+                                   </table>
+                               </div>
+
+                               <!-- Nút lưu -->
+                               <div class="mt-3 text-end">
+                                   <button class="btn btn-secondary me-2">Hủy thay đổi</button>
+                                   <button class="btn btn-primary">
+                                       <i class="fas fa-save"></i> Lưu thay đổi
+                                   </button>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                   <!-- Tab Cấu hình hệ thống -->
+                  <div id="system" class="tab-pane fade">
+                     <div class="card">
+                       <div class="card-body">
+                          <h5 class="card-title mb-4">Cấu hình hệ thống</h5>
+                            <!-- Add configuration form elements here -->
+                            <div class="mb-3">
+                                <label class="form-label">Tên hệ thống</label>
+                                <input type="text" class="form-control" value="Hệ thống quản lý UBND Quận Liên Chiểu">
+                            </div>
+                            <div class="mb-3">
+                                 <label class="form-label">Mô tả hệ thống</label>
+                                 <textarea class="form-control">Hệ thống quản lý thông tin của UBND Quận Liên Chiểu</textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Logo</label>
+                                <input type="file" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                 <label class="form-label">Số điện thoại hỗ trợ</label>
+                                 <input type="text" class="form-control" value="(0236) 3.731.104">
+                            </div>
+                          <button class="btn btn-primary">
+                              <i class="fas fa-save"></i> Lưu cấu hình
+                           </button>
+                      </div>
+                    </div>
+                  </div>
+               </div>
+           </div>
+       </main>
+   </div>
+     <!-- Modal Thêm vai trò -->
+   <div class="modal fade" id="addRoleModal">
+       <div class="modal-dialog">
+           <div class="modal-content">
+               <div class="modal-header">
+                   <h5 class="modal-title">Thêm vai trò</h5>
+                   <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+               </div>
+               <div class="modal-body">
+                   <div class="mb-3">
+                       <label class="form-label">Tên vai trò</label>
+                       <input type="text" class="form-control" placeholder="Nhập tên vai trò">
+                   </div>
+                   <div class="mb-3">
+                       <label class="form-label">Mô tả</label>
+                       <input type="text" class="form-control" placeholder="Nhập mô tả">
+                   </div>
+                   <div class="mb-3">
+                       <label class="form-label">Quyền hệ thống</label>
+                       <div class="form-check mb-2">
+                           <input type="checkbox" class="form-check-input">
+                           <label>Thêm dữ liệu</label>
+                       </div>
+                       <div class="form-check mb-2">
+                           <input type="checkbox" class="form-check-input">
+                           <label>Sửa dữ liệu</label>
+                       </div>
+                       <div class="form-check mb-2">
+                           <input type="checkbox" class="form-check-input">
+                           <label>Xóa dữ liệu</label>
+                       </div>
+                       <div class="form-check mb-2">
+                           <input type="checkbox" class="form-check-input">
+                           <label>Duyệt dữ liệu</label>
+                       </div>
+                       <div class="form-check mb-2">
+                           <input type="checkbox" class="form-check-input">
+                           <label>Xuất dữ liệu</label>
+                       </div>
+                        <div class="form-check mb-2">
+                            <input type="checkbox" class="form-check-input">
+                            <label>Quản lý người dùng</label>
+                        </div>
+                   </div>
+               </div>
+               <div class="modal-footer">
+                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                   <button type="button" class="btn btn-primary">Lưu vai trò</button>
+               </div>
+           </div>
+       </div>
+   </div>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="/assets/js/main.js"></script>
+    <script src="https://ioc.hctech.com.vn/assets/hcbot.min.js" data-client-id="E7WLVUu3EbDf"></script>
+</body>
+</html>

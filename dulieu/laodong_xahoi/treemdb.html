@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Trẻ em đặc biệt - UBND Quận Liên Chiểu</title>
+    <link rel="icon" type="image/png" href="../../assets/images/icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/quanlytreem.css">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Sidebar -->
+    <div id="sidebar"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="page-header">
+            <h1>Quản lý Trẻ em đặc biệt</h1>
+            <div class="header-actions">
+                <button class="btn btn-primary" onclick="openAddForm()">
+                    <i class="fas fa-plus"></i> Thêm mới
+                </button>
+                <button class="btn btn-excel" onclick="exportToExcel()">
+                    <i class="fas fa-file-excel"></i> Xuất Excel
+                </button>
+            </div>
+        </div>
+
+        <!-- Thống kê nhanh -->
+        <div class="stats-section">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <div class="stats-icon total">
+                            <i class="fas fa-child"></i>
+                        </div>
+                        <div class="stats-info">
+                            <h3>Tổng số trẻ em</h3>
+                            <p id="totalChildren">0</p>
+                            <small>Đang quản lý</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <div class="stats-icon risk">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="stats-info">
+                            <h3>Có nguy cơ</h3>
+                            <p id="riskChildren">0</p>
+                            <small>Cần theo dõi</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <div class="stats-icon support">
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                        <div class="stats-info">
+                            <h3>Đã hỗ trợ</h3>
+                            <p id="supportedChildren">0</p>
+                            <small>Trong năm 2024</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <div class="stats-icon insurance">
+                            <i class="fas fa-hospital-user"></i>
+                        </div>
+                        <div class="stats-info">
+                            <h3>Có BHYT</h3>
+                            <p id="insuredChildren">0</p>
+                            <small>Còn hiệu lực</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Hoàn cảnh đặc biệt</label>
+                        <select class="form-control" id="circumstanceFilter">
+                            <option value="">Tất cả</option>
+                            <option value="orphan">Mồ côi</option>
+                            <option value="abandoned">Bị bỏ rơi</option>
+                            <option value="disabled">Khuyết tật</option>
+                            <option value="poverty">Hộ nghèo</option>
+                            <option value="abuse">Bị xâm hại</option>
+                            <option value="trafficking">Nạn nhân mua bán</option>
+                            <option value="labor">Lao động sớm</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Phường</label>
+                        <select class="form-control" id="wardFilter">
+                            <option value="">Tất cả</option>
+                            <option value="hoaMinh">Hòa Minh</option>
+                            <option value="hoaKhanhNam">Hòa Khánh Nam</option>
+                            <option value="hoaKhanhBac">Hòa Khánh Bắc</option>
+                            <option value="hoaHiepNam">Hòa Hiệp Nam</option>
+                            <option value="hoaHiepBac">Hòa Hiệp Bắc</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Hình thức hỗ trợ</label>
+                        <select class="form-control" id="supportTypeFilter">
+                            <option value="">Tất cả</option>
+                            <option value="education">Học phí</option>
+                            <option value="healthcare">Y tế</option>
+                            <option value="nutrition">Dinh dưỡng</option>
+                            <option value="shelter">Nhà ở</option>
+                            <option value="emergency">Đột xuất</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Tìm kiếm</label>
+                        <div class="search-box">
+                            <input type="text" class="form-control" id="searchInput" 
+                                   placeholder="Tên trẻ, địa chỉ...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table Section -->
+        <div class="table-section">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th width="50">STT</th>
+                            <th width="200">Họ và tên</th>
+                            <th width="90">Năm sinh</th>
+                            <th width="120">Hoàn cảnh</th>
+                            <th width="200">Địa chỉ</th>
+                            <th width="120">Phường</th>
+                            <th width="170">Hình thức hỗ trợ</th>
+                            <th width="120">BHYT</th>
+                            <th width="100">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody id="childrenTable"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination-section">
+            <div class="row">
+                <div class="col-6">
+                    <div class="pagination-info" id="paginationInfo">
+                        Hiển thị 0-0 trong tổng số 0 trẻ em
+                    </div>
+                </div>
+                <div class="col-6">
+                    <ul class="pagination" id="pagination"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/quanlytreem.js"></script>
+    <script src="../../assets/js/hcbot.min.js" data-client-id="aZ99B0Ddnl5m"></script>
+</body>
+</html>

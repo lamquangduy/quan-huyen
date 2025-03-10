@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Thủy sản - UBND Quận Liên Chiểu</title>
+    <link rel="icon" type="image/png" href="../../assets/images/icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/quanlythuyssan.css">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Sidebar -->
+    <div id="sidebar"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="page-header">
+            <h1>Quản lý Thủy sản</h1>
+            <div class="header-actions">
+                <button class="btn btn-primary" onclick="openAddForm()">
+                    <i class="fas fa-plus"></i> Thêm mới
+                </button>
+                <button class="btn btn-excel" onclick="exportToExcel()">
+                    <i class="fas fa-file-excel"></i> Xuất Excel
+                </button>
+            </div>
+        </div>
+
+        <!-- Thống kê nhanh -->
+        <div class="stats-section">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <div class="stats-icon ship">
+                            <i class="fas fa-ship"></i>
+                        </div>
+                        <div class="stats-info">
+                            <h3>Tổng số tàu cá</h3>
+                            <p id="totalShips">0</p>
+                            <small>Đang hoạt động</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <div class="stats-icon team">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stats-info">
+                            <h3>Tổ đoàn kết</h3>
+                            <p id="totalTeams">0</p>
+                            <small>Tổ đoàn kết đánh bắt</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <div class="stats-icon warning">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="stats-info">
+                            <h3>Cần cập nhật</h3>
+                            <p id="needUpdate">0</p>
+                            <small>Giấy phép sắp hết hạn</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <div class="stats-icon fish">
+                            <i class="fas fa-fish"></i>
+                        </div>
+                        <div class="stats-info">
+                            <h3>Sản lượng</h3>
+                            <p id="totalOutput">0</p>
+                            <small>Tấn/tháng</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Loại tàu</label>
+                        <select class="form-control" id="shipTypeFilter">
+                            <option value="">Tất cả</option>
+                            <option value="over15">Từ 15m trở lên</option>
+                            <option value="12to15">Từ 12m đến dưới 15m</option>
+                            <option value="6to12">Từ 6m đến dưới 12m</option>
+                            <option value="under6">Dưới 6m và thúng máy</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Khu vực</label>
+                        <select class="form-control" id="areaFilter">
+                            <option value="">Tất cả</option>
+                            <option value="namO">Nam Ô</option>
+                            <option value="thuanPhuoc">Thuận Phước</option>
+                            <option value="hoaHiep">Hòa Hiệp</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Trạng thái</label>
+                        <select class="form-control" id="statusFilter">
+                            <option value="">Tất cả</option>
+                            <option value="active">Đang hoạt động</option>
+                            <option value="maintenance">Đang bảo dưỡng</option>
+                            <option value="expired">Hết hạn đăng kiểm</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Tìm kiếm</label>
+                        <div class="search-box">
+                            <input type="text" class="form-control" id="searchInput" 
+                                   placeholder="Số đăng ký, chủ tàu...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table Section -->
+        <div class="table-section">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th width="50">STT</th>
+                            <th width="120">Số đăng ký</th>
+                            <th width="200">Chủ tàu</th>
+                            <th width="100">Chiều dài (m)</th>
+                            <th width="100">Công suất (CV)</th>
+                            <th width="130">Nghề khai thác</th>
+                            <th width="120">Ngày đăng kiểm</th>
+                            <th width="120">Ngày hết hạn</th>
+                            <th width="160">Trạng thái</th>
+                            <th width="100">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody id="fishingBoatTable"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination-section">
+            <div class="row">
+                <div class="col-6">
+                    <div class="pagination-info" id="paginationInfo">
+                        Hiển thị 0-0 trong tổng số 0 tàu cá
+                    </div>
+                </div>
+                <div class="col-6">
+                    <ul class="pagination" id="pagination"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/quanlythuyssan.js"></script>
+    <script src="../../assets/js/hcbot.min.js" data-client-id="aZ99B0Ddnl5m"></script>
+</body>
+</html>
